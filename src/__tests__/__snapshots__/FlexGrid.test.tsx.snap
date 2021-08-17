@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FlexGrid blueberry theme 1`] = `
+Array [
+  Object {
+    "display": "block",
+    "font-family": "'Open Sans',sans-serif",
+    "margin": "0px auto",
+    "margin-bottom": "0px",
+    "margin-left": "auto",
+    "margin-right": "auto",
+    "margin-top": "0px",
+    "overflow": "hidden",
+    "position": "relative",
+    "visibility": "visible",
+    "width": "100%",
+  },
+  Object {
+    "background-color": "rgb(28, 61, 107)",
+    "display": "block",
+    "font-family": "'Open Sans',sans-serif",
+    "overflow": "hidden",
+    "position": "relative",
+    "visibility": "visible",
+  },
+  Object {
+    "background-color": "rgb(28, 61, 107)",
+    "display": "block",
+    "font-family": "'Open Sans',sans-serif",
+    "overflow": "hidden",
+    "position": "relative",
+    "visibility": "visible",
+  },
+]
+`;
+
+exports[`FlexGrid blueberry theme 2`] = `
+Array [
+  Object {
+    "background-color": "rgb(238, 240, 241)",
+    "box-sizing": "border-box",
+    "display": "block",
+    "flex-basis": "25%",
+    "flex-grow": "1",
+    "font-family": "'Open Sans',sans-serif",
+    "max-width": "100%",
+    "position": "relative",
+    "visibility": "visible",
+  },
+  Object {
+    "background-color": "rgb(28, 61, 107)",
+    "box-sizing": "border-box",
+    "display": "block",
+    "flex-basis": "25%",
+    "flex-grow": "1",
+    "font-family": "'Open Sans',sans-serif",
+    "max-width": "100%",
+    "position": "relative",
+    "visibility": "visible",
+  },
+  Object {
+    "background-color": "rgb(238, 240, 241)",
+    "box-sizing": "border-box",
+    "display": "block",
+    "flex-basis": "25%",
+    "flex-grow": "1",
+    "font-family": "'Open Sans',sans-serif",
+    "max-width": "100%",
+    "position": "relative",
+    "visibility": "visible",
+  },
+  Object {
+    "background-color": "rgb(28, 61, 107)",
+    "box-sizing": "border-box",
+    "display": "block",
+    "flex-basis": "25%",
+    "flex-grow": "1",
+    "font-family": "'Open Sans',sans-serif",
+    "max-width": "100%",
+    "position": "relative",
+    "visibility": "visible",
+  },
+  Object {
+    "background-color": "rgb(28, 61, 107)",
+    "box-sizing": "border-box",
+    "display": "block",
+    "flex-basis": "25%",
+    "flex-grow": "1",
+    "font-family": "'Open Sans',sans-serif",
+    "max-width": "100%",
+    "position": "relative",
+    "visibility": "visible",
+  },
+]
+`;
+
+exports[`FlexGrid defaults 1`] = `
+Array [
+  Object {
+    "display": "block",
+    "margin": "0px auto",
+    "margin-bottom": "0px",
+    "margin-left": "auto",
+    "margin-right": "auto",
+    "margin-top": "0px",
+    "overflow": "hidden",
+    "position": "relative",
+    "visibility": "visible",
+    "width": "100%",
+  },
+  Object {
+    "background-color": "rgb(69, 109, 27)",
+    "display": "block",
+    "overflow": "hidden",
+    "position": "relative",
+    "visibility": "visible",
+  },
+  Object {
+    "background-color": "rgb(69, 109, 27)",
+    "display": "block",
+    "overflow": "hidden",
+    "position": "relative",
+    "visibility": "visible",
+  },
+]
+`;
+
+exports[`FlexGrid defaults 2`] = `
+Array [
+  Object {
+    "background-color": "rgb(238, 240, 241)",
+    "box-sizing": "border-box",
+    "display": "block",
+    "flex-basis": "25%",
+    "flex-grow": "1",
+    "max-width": "100%",
+    "position": "relative",
+    "visibility": "visible",
+  },
+  Object {
+    "background-color": "rgb(69, 109, 27)",
+    "box-sizing": "border-box",
+    "display": "block",
+    "flex-basis": "25%",
+    "flex-grow": "1",
+    "max-width": "100%",
+    "position": "relative",
+    "visibility": "visible",
+  },
+  Object {
+    "background-color": "rgb(238, 240, 241)",
+    "box-sizing": "border-box",
+    "display": "block",
+    "flex-basis": "25%",
+    "flex-grow": "1",
+    "max-width": "100%",
+    "position": "relative",
+    "visibility": "visible",
+  },
+  Object {
+    "background-color": "rgb(69, 109, 27)",
+    "box-sizing": "border-box",
+    "display": "block",
+    "flex-basis": "25%",
+    "flex-grow": "1",
+    "max-width": "100%",
+    "position": "relative",
+    "visibility": "visible",
+  },
+  Object {
+    "background-color": "rgb(69, 109, 27)",
+    "box-sizing": "border-box",
+    "display": "block",
+    "flex-basis": "25%",
+    "flex-grow": "1",
+    "max-width": "100%",
+    "position": "relative",
+    "visibility": "visible",
+  },
+]
+`;
