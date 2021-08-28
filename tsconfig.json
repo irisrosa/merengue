@@ -19,7 +19,10 @@
     "target": "esnext",
     "baseUrl": "src",
     "rootDirs": ["src"],
-    "outDir": "dist"
+    "outDir": "dist",
+    "paths": {
+      "@src/*": ["./*"]
+    }
   },
   "include": ["src", "jest-setup.ts"]
 }
