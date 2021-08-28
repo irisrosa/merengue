@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components';
 import { pick, omit } from 'ramda';
 import { responsiveMaxWidth } from '@theme/utils';
 import { AvailableThemes } from '@src/theme/types';
-import { Block, FlexWrap } from '@components/layout/FlexGrid';
-import { Background } from '@components/layout/Background';
+import { Block, FlexWrap } from './';
+import { Background } from './Background';
 import { BlockSetInterface } from './types';
 import { BlockSetContext } from './BlockSetContext';
 

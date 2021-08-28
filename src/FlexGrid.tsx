@@ -1,5 +1,5 @@
 import React from 'react';
-import { BlockSet } from '@components/layout/FlexGrid';
+import { BlockSet } from './BlockSet';
 import { GridInterface } from './types';
 import { withTheme } from '@src/hocs';
 import { ThemeProvider } from 'styled-components';
