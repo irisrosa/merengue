@@ -1,0 +1,16 @@
+{
+  "bracketSpacing": true,
+  "endOfLine": "lf",
+  "htmlWhitespaceSensitivity": "css",
+  "jsxSingleQuote": false,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "useTabs": false,
+  "arrowParens": "avoid",
+  "printWidth": 100,
+  "jsxBracketSameLine": false,
+  "semi": true,
+  "singleQuote": true
+}
