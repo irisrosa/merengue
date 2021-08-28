@@ -1,7 +1,25 @@
 import React, { ComponentType, ElementType } from 'react';
-import { ComponentInterface, ContextVariant } from '@src/components/types';
+import { PropsWithChildren } from 'react';
 
 type Comp = ComponentType | React.FC | ElementType;
+
+export type OnClickType = () => void;
+
+export type ContextVariant = 'default' | 'dark' | 'light' | 'highlight';
+
+export type Variant = 'white' | 'primary';
+
+export interface ComponentProps {
+  theme?: string; // TODO
+  className?: string;
+  style?: Record<string, unknown>;
+}
+
+export type ComponentInterface = PropsWithChildren<ComponentProps>;
+
+export type ComponentPropsWithVariants = ComponentInterface & {
+  variant?: Variant;
+};
 
 export type ImageType = {
   alt?: string;
