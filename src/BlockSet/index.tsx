@@ -1,10 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { pick, omit } from 'ramda';
-import { Block, FlexWrap } from './';
-import { Background } from './Background';
-import { BlockSetInterface } from './types';
-import { BlockSetContext } from './BlockSetContext';
+import { Block, FlexWrap } from '@src/index';
+import { Background } from '@src/Background';
+import { BlockSetInterface } from '@src/types';
+import { BlockSetContext } from '@src/BlockSet/BlockSetContext';
 
 const BlockSetStyled = styled.div<Pick<BlockSetInterface, 'bleedBackground'>>`
   position: relative;

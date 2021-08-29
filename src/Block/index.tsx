@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { Background } from '@src/Background';
-import { BlockSetContext } from './BlockSetContext';
-import { BlockInterface } from './types';
+import { BlockSetContext } from '@src/BlockSet/BlockSetContext';
+import { BlockInterface } from '@src/types';
 
 const BlockContent = styled.div`
   position: relative;

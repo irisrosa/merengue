@@ -1,6 +1,6 @@
 import React from 'react';
-import { BlockSet } from './BlockSet';
-import { GridInterface } from './types';
+import { BlockSet } from '../BlockSet';
+import { GridInterface } from '../types';
 
 export const FlexGrid: React.FC<GridInterface> = ({ data }) => (
   <>
