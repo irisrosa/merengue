@@ -10,6 +10,5 @@ module.exports = {
       },
     ],
   ],
-  // ignore: ['./src/stories/**/*', '**/__tests__', './src/testUtils', './src/**/*.d.ts'],
   ignore: ['**/__tests__', './src/testUtils', './src/**/*.d.ts'],
 };

@@ -1,24 +1,21 @@
 module.exports = {
-  roots: ["<rootDir>/src"],
-  testMatch: [
-    "**/__tests__/**/*.+(ts|tsx|js)",
-    "**/?(*.)+(spec|test).+(ts|tsx|js)",
-  ],
-  preset: "ts-jest",
+  roots: ['<rootDir>/src'],
+  testMatch: ['**/__tests__/**/*.+(ts|tsx|js)', '**/?(*.)+(spec|test).+(ts|tsx|js)'],
+  preset: 'ts-jest',
   globals: {
-    "ts-jest": {
+    'ts-jest': {
       useESM: true,
     },
   },
-  testEnvironment: "node",
+  testEnvironment: 'node',
   transform: {
-    "^.+\\.(ts|tsx)$": "babel-jest",
+    '^.+\\.(ts|tsx)$': 'babel-jest',
   },
-  setupFilesAfterEnv: ["<rootDir>/jest-setup.ts"],
+  setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
   moduleNameMapper: {
-    "\\.css$": "<rootDir>/mockStyle.ts",
-    "^@src(.*)$": "<rootDir>/src$1",
-    "^@components(.*)$": "<rootDir>/src/components$1",
-    "^@theme(.*)$": "<rootDir>/src/theme$1",
+    '\\.css$': '<rootDir>/mockStyle.ts',
+    '^@src(.*)$': '<rootDir>/src$1',
+    '^@components(.*)$': '<rootDir>/src/components$1',
+    '^@theme(.*)$': '<rootDir>/src/theme$1',
   },
 };

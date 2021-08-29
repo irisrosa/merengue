@@ -1,29 +1,4 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "declaration": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "strict": true,
-    "strictNullChecks": false,
-    "suppressImplicitAnyIndexErrors": true,
-    "target": "esnext",
-    "baseUrl": "src",
-    "rootDirs": ["src"],
-    "outDir": "dist",
-    "paths": {
-      "@src/*": ["./*"]
-    }
-  },
-  "include": ["src"],
+  "extends": "./tsconfig.json",
   "exclude": ["src/stories/**/*", "src/**/*__tests__/*", "src/testUtils"]
 }
