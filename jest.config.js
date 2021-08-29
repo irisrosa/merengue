@@ -7,11 +7,11 @@ module.exports = {
       useESM: true,
     },
   },
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
   transform: {
     '^.+\\.(ts|tsx)$': 'babel-jest',
   },
-  setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/jest-setup.ts'],
   moduleNameMapper: {
     '\\.css$': '<rootDir>/mockStyle.ts',
     '^@src(.*)$': '<rootDir>/src$1',

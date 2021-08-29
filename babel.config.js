@@ -10,5 +10,4 @@ module.exports = {
       },
     ],
   ],
-  ignore: ['**/__tests__', './src/testUtils', './src/**/*.d.ts'],
 };
