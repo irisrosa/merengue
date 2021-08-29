@@ -6,7 +6,7 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && yarn types && NODE_ENV=es babel src --out-dir \"dist\" --source-maps --extensions \".ts,.tsx\"",
+    "build": "rimraf dist && yarn types && NODE_ENV=es babel src --out-dir \"dist\" --source-maps --extensions \".ts,.tsx\" --ignore \"./src/stories/**/*\"",
     "types": "tsc --project tsconfig.prod.json",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
