@@ -9,6 +9,6 @@ export const Overlay = styled.div<ComponentInterface>`
   right: 0;
   bottom: 0;
   z-index: -1;
-  background: ${({ theme }) => transparentize(0.45, theme.colors.gray900)};
+  background: ${({ theme }) => transparentize(0.45, '#4B4B4B')};
   z-index: 0;
 `;
