@@ -5,21 +5,12 @@ type Comp = ComponentType | React.FC | ElementType;
 
 export type OnClickType = () => void;
 
-export type ContextVariant = 'default' | 'dark' | 'light' | 'highlight';
-
-export type Variant = 'white' | 'primary';
-
 export interface ComponentProps {
-  theme?: string; // TODO
   className?: string;
   style?: Record<string, unknown>;
 }
 
 export type ComponentInterface = PropsWithChildren<ComponentProps>;
-
-export type ComponentPropsWithVariants = ComponentInterface & {
-  variant?: Variant;
-};
 
 export type ImageType = {
   alt?: string;
@@ -33,7 +24,6 @@ export type ImageType = {
 
 export interface BlockData {
   Component: Comp;
-  style?: ContextVariant;
   size?: number;
   backgroundImage?: ImageType;
   noBackground?: boolean;
@@ -53,24 +43,21 @@ export interface GridInterface extends ComponentInterface {
 }
 
 export interface BlockSetInterface
-  extends Pick<ComponentInterface, 'theme' | 'className' | 'children'>,
+  extends Pick<ComponentInterface, 'className' | 'children'>,
     Pick<BlockSetData, 'blockPadding' | 'bleedContent' | 'bleedBackground' | 'BgComp'> {
-  blockSetStyle?: ContextVariant;
   blocks?: BlockData[];
   backgroundImage?: ImageType;
 }
 
 export interface BlockInterface
-  extends Pick<ComponentInterface, 'theme' | 'className' | 'children'>,
+  extends Pick<ComponentInterface, 'className' | 'children'>,
     Pick<BlockData, 'size' | 'backgroundImage'> {
   noPadding?: boolean;
-  blockStyle?: ContextVariant;
   position?: number;
   noBackground?: boolean;
   BgComp?: Comp;
 }
 
-export type BlockSetContextType = Pick<BlockData, 'style'> &
-  Pick<BlockSetData, 'blockPadding' | 'BgComp'> & { hasCustomBg?: boolean };
-
-export type BlockContextType = ContextVariant;
+export type BlockSetContextType = Pick<BlockSetData, 'blockPadding' | 'BgComp'> & {
+  hasCustomBg?: boolean;
+};

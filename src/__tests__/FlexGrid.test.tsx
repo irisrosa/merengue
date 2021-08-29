@@ -1,7 +1,6 @@
 import React from 'react';
 import { screen, render, within } from '@testing-library/react';
-import { BlockSetData, GridInterface } from '@components/layout/FlexGrid/types';
-import { ThemeContextRender } from '@src/testUtils/ContextRenderer';
+import { BlockSetData, GridInterface } from '@src/types';
 import { FlexGrid } from '../FlexGrid';
 import { getStyles } from '@src/testUtils';
 
@@ -37,22 +36,6 @@ const renderComponent = (props: GridInterface) => <FlexGrid {...props} />;
 describe('FlexGrid', () => {
   test('defaults', () => {
     render(renderComponent({ data: [noBleedBlockSet, bleedbgBlockset, fullBleedBlockSet] }));
-
-    const allSets = screen.queryAllByTestId('blockset');
-    const allBlocks = screen.queryAllByTestId('block');
-
-    expect(screen.queryAllByTestId('blockset')).toHaveLength(3);
-    expect(allSets.map(s => getStyles(s))).toMatchSnapshot();
-
-    expect(screen.queryAllByTestId('block')).toHaveLength(5);
-    expect(allBlocks.map(b => getStyles(b))).toMatchSnapshot();
-  });
-
-  test('blueberry theme', () => {
-    ThemeContextRender(
-      renderComponent({ data: [noBleedBlockSet, bleedbgBlockset, fullBleedBlockSet] }),
-      'blueberry'
-    );
 
     const allSets = screen.queryAllByTestId('blockset');
     const allBlocks = screen.queryAllByTestId('block');

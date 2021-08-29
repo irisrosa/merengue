@@ -1,8 +1,7 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import { lime } from '@src/theme/lime';
-import { Block } from '@components/layout/FlexGrid/Block';
-import { BlockInterface } from '@components/layout/FlexGrid/types';
+import { Block } from '@src/Block';
+import { BlockInterface } from '@src/types';
 import { WithBlockProviders, ThemeContextRender } from '@src/testUtils/ContextRenderer';
 
 const renderComponent = (props: Partial<BlockInterface>) => (

@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
-import { generateMediaQueries, respondTo } from '@src/theme/utils';
-import { Background } from '@components/layout/Background';
+import { Background } from '@src/Background';
 import { BlockSetContext } from './BlockSetContext';
-import { BlockContext } from './BlockContext';
 import { BlockInterface } from './types';
 
 const BlockContent = styled.div`
@@ -23,14 +21,14 @@ export const StyledBlock = styled.div<BlockInterface>`
   display: flex;
   flex-direction: column;
 
-  ${({ theme, noPadding }) =>
+  ${({ noPadding }) =>
     !noPadding &&
     css`
       ${BlockContent} {
-        padding: ${theme.spacing.md};
-        ${respondTo().mdXl`
-          padding: ${theme.spacing.lg};
-        `}
+        padding: 10px;
+        @media (min-width: 767px) {
+          padding: 20px;
+        }
       }
     `}
 
@@ -56,33 +54,14 @@ export const StyledBlock = styled.div<BlockInterface>`
     }
   }}
 
-  ${({ theme }) =>
-    generateMediaQueries('flex-basis', { block: { sm: '100%' } }, theme.queries).block}
-
-  ${({ blockStyle, theme }) => {
-    switch (blockStyle) {
-      case 'light':
-        return css`
-          background-color: ${theme.colors.gray100};
-        `;
-      case 'highlight':
-        return css`
-          background-color: ${theme.colors.brand};
-        `;
-      case 'dark':
-        return css`
-          background-color: ${theme.colors.brand700};
-        `;
-      default:
-        return css``;
-    }
-  }}
+  @media (max-width: 767px) {
+    flex-basis: 100%;
+  }
 `;
 
 export const Block: React.FC<BlockInterface> = ({
   children,
   noPadding,
-  blockStyle,
   position,
   noBackground,
   backgroundImage,
@@ -90,13 +69,11 @@ export const Block: React.FC<BlockInterface> = ({
   ...rest
 }) => {
   const {
-    style: blockSetStyle,
     blockPadding: usePadding = !noPadding,
     hasCustomBg: blockSetHasCustomBg,
     BgComp: BlockSetBgComp,
   } = useContext(BlockSetContext);
 
-  const bStyle = blockStyle || blockSetStyle;
   const useBlockSetCustomBg = position === 0 && blockSetHasCustomBg;
   const hasCustomBgImg = Boolean(backgroundImage);
   const hasCustomBgComp = Boolean(BgComp);
@@ -106,26 +83,19 @@ export const Block: React.FC<BlockInterface> = ({
   const Content = () => <BlockContent data-testid="block-content">{children}</BlockContent>;
 
   return (
-    <BlockContext.Provider value={bStyle}>
-      <StyledBlock
-        data-testid="block"
-        blockStyle={useBlockSetCustomBg || noBackground ? 'default' : bStyle}
-        noPadding={!usePadding}
-        {...rest}
-      >
-        {!noBackground && !useBlockSetCustomBg && hasCustomBg ? (
-          <BackgroundComp
-            data-testid="background-image"
-            style={{ position: 'static' }}
-            overlay
-            {...backgroundImage}
-          >
-            <Content />
-          </BackgroundComp>
-        ) : (
+    <StyledBlock data-testid="block" noPadding={!usePadding} {...rest}>
+      {!noBackground && !useBlockSetCustomBg && hasCustomBg ? (
+        <BackgroundComp
+          data-testid="background-image"
+          style={{ position: 'static' }}
+          overlay
+          {...backgroundImage}
+        >
           <Content />
-        )}
-      </StyledBlock>
-    </BlockContext.Provider>
+        </BackgroundComp>
+      ) : (
+        <Content />
+      )}
+    </StyledBlock>
   );
 };

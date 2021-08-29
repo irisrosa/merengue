@@ -1,49 +1,30 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { pick, omit } from 'ramda';
-import { responsiveMaxWidth } from '@theme/utils';
-import { AvailableThemes } from '@src/theme/types';
 import { Block, FlexWrap } from './';
 import { Background } from './Background';
 import { BlockSetInterface } from './types';
 import { BlockSetContext } from './BlockSetContext';
 
-const BlockSetStyled = styled.div<
-  Pick<BlockSetInterface, 'blockSetStyle' | 'theme' | 'bleedBackground'>
->`
+const BlockSetStyled = styled.div<Pick<BlockSetInterface, 'bleedBackground'>>`
   position: relative;
   overflow: hidden;
 
-  ${({ bleedBackground, theme }) =>
+  ${({ bleedBackground }) =>
     !bleedBackground &&
     css`
-      ${responsiveMaxWidth(theme).container}
+      @media (min-width: 992px) {
+        max-width: 960px;
+      }
       width: 100%;
       margin: 0 auto;
     `}
-
-  ${({ blockSetStyle, theme }) => {
-    switch (blockSetStyle) {
-      case 'light':
-        return css`
-          background-color: ${theme.colors.gray100};
-        `;
-      case 'highlight':
-        return css`
-          background-color: ${theme.colors.brand};
-        `;
-      case 'dark':
-        return css`
-          background-color: ${theme.colors.brand700};
-        `;
-      default:
-        return css``;
-    }
-  }}
 `;
 
-const FlexGridContainer = styled.div<{ theme?: keyof AvailableThemes }>`
-  ${({ theme }) => responsiveMaxWidth(theme).container}
+const FlexGridContainer = styled.div`
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
   width: 100%;
   margin: 0 auto;
 `;
@@ -53,7 +34,7 @@ const Blocks: React.FC<Pick<BlockSetInterface, 'blocks'>> = ({ blocks }) => (
     {blocks.map(({ style, Component, ...block }, blockKey) => {
       const blockProps = ['size', 'backgroundImage', 'noBackground'];
       return (
-        <Block key={blockKey} position={blockKey} blockStyle={style} {...pick(blockProps, block)}>
+        <Block key={blockKey} position={blockKey} {...pick(blockProps, block)}>
           <Component {...omit(blockProps, block)} />
         </Block>
       );
@@ -63,7 +44,6 @@ const Blocks: React.FC<Pick<BlockSetInterface, 'blocks'>> = ({ blocks }) => (
 
 export const BlockSet: React.FC<BlockSetInterface> = ({
   blocks,
-  blockSetStyle,
   bleedContent,
   bleedBackground,
   blockPadding,
@@ -86,10 +66,9 @@ export const BlockSet: React.FC<BlockSetInterface> = ({
   const content = bleedContent ? renderChildren() : renderContainer(renderChildren());
 
   return (
-    <BlockSetContext.Provider value={{ style: blockSetStyle, blockPadding, hasCustomBg, BgComp }}>
+    <BlockSetContext.Provider value={{ blockPadding, hasCustomBg, BgComp }}>
       <BlockSetStyled
         data-testid="blockset"
-        blockSetStyle={blockSetStyle}
         bleedBackground={bleedBackground || bleedContent}
         {...rest}
       >
