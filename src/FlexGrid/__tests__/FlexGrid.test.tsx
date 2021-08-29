@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen, render, within } from '@testing-library/react';
-import { BlockSetData, GridInterface } from '@src/types';
+import { BlockSetData } from '@src/types';
 import { FlexGrid } from '@src/FlexGrid';
 import { getStyles } from '@src/testUtils';
 
