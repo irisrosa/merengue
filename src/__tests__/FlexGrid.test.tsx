@@ -1,7 +1,7 @@
 import React from 'react';
 import { screen, render, within } from '@testing-library/react';
 import { BlockSetData, GridInterface } from '@src/types';
-import { FlexGrid } from '../FlexGrid';
+import { FlexGrid } from '@src/FlexGrid';
 import { getStyles } from '@src/testUtils';
 
 const noOpComp = () => <React.Fragment />;
@@ -31,11 +31,9 @@ const fullBleedBlockSet: BlockSetData = {
   blocks: [{ style: 'dark', Component: noOpComp }],
 };
 
-const renderComponent = (props: GridInterface) => <FlexGrid {...props} />;
-
 describe('FlexGrid', () => {
   test('defaults', () => {
-    render(renderComponent({ data: [noBleedBlockSet, bleedbgBlockset, fullBleedBlockSet] }));
+    render(<FlexGrid data={[noBleedBlockSet, bleedbgBlockset, fullBleedBlockSet]} />);
 
     const allSets = screen.queryAllByTestId('blockset');
     const allBlocks = screen.queryAllByTestId('block');
@@ -77,7 +75,7 @@ describe('FlexGrid', () => {
         },
       ],
     };
-    render(renderComponent({ data: [blocksetWithBackground] }));
+    render(<FlexGrid data={[blocksetWithBackground]} />);
 
     const blockset = screen.getByTestId('blockset');
     const blockSetBg = within(blockset).queryAllByTestId('blockset-background-image');
