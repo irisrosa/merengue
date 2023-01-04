@@ -1,0 +1,22 @@
+{
+  "exclude": ["stories", "testUtils", "__tests__"],
+  "module": {
+    "type": "es6",
+    "strict": true,
+    "strictMode": true
+  },
+  "jsc": {
+    "baseUrl": "src",
+    "paths": {
+      "@src/*": ["./*"]
+    },
+    "minify": {
+      "compress": true
+    },
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "dynamicImport": true
+    }
+  }
+}
