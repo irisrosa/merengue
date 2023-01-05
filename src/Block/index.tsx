@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
+
 import styled, { css } from 'styled-components';
+
 import { Background } from '@src/Background';
 import { BlockSetContext } from '@src/BlockSet/BlockSetContext';
 import { BlockInterface } from '@src/types';

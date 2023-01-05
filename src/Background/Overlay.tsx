@@ -1,5 +1,6 @@
-import styled from 'styled-components';
 import { transparentize } from 'polished';
+import styled from 'styled-components';
+
 import { ComponentInterface } from '@src/types';
 
 export const Overlay = styled.div<ComponentInterface>`

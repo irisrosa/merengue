@@ -12,5 +12,7 @@
   "printWidth": 100,
   "jsxBracketSameLine": false,
   "semi": true,
-  "singleQuote": true
+  "singleQuote": true,
+  "importOrder": ["^react(.*)", "styled-components/(.*)", "<THIRD_PARTY_MODULES>", "@src/(.*)", "^[./]"],
+  "importOrderSeparation": true
 }

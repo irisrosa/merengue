@@ -1,8 +1,10 @@
 import React from 'react';
+
 import { render, screen, RenderResult } from '@testing-library/react';
+
 import { Block } from '@src/Block';
-import { BlockInterface, BlockSetContextType } from '@src/types';
 import { BlockSetContext } from '@src/BlockSet/BlockSetContext';
+import { BlockInterface, BlockSetContextType } from '@src/types';
 
 export const renderWithBlockSetContext = (
   ui: React.ReactChild,

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { BlockSetData } from '@src/types';
 
 export const data: BlockSetData[] = [
@@ -397,8 +398,7 @@ export const data: BlockSetData[] = [
         useImageBackground: true,
         backgroundImage: {
           alt: 'something',
-          src:
-            'https://images.unsplash.com/photo-1558244661-d248897f7bc4?crop=entropy&fm=jpg&h=500&q=80&w=1600&cs=tinysrgb&fit=crop',
+          src: 'https://images.unsplash.com/photo-1558244661-d248897f7bc4?crop=entropy&fm=jpg&h=500&q=80&w=1600&cs=tinysrgb&fit=crop',
         },
         Component: (): React.ReactElement => (
           <>
@@ -428,8 +428,7 @@ export const data: BlockSetData[] = [
         useImageBackground: true,
         backgroundImage: {
           alt: 'something',
-          src:
-            'https://images.unsplash.com/photo-1458682625221-3a45f8a844c7?crop=entropy&fm=jpg&h=500&q=80&w=1600&cs=tinysrgb&fit=crop',
+          src: 'https://images.unsplash.com/photo-1458682625221-3a45f8a844c7?crop=entropy&fm=jpg&h=500&q=80&w=1600&cs=tinysrgb&fit=crop',
         },
         Component: (): React.ReactElement => (
           <>
@@ -476,8 +475,7 @@ export const data: BlockSetData[] = [
         useImageBackground: true,
         backgroundImage: {
           alt: 'something',
-          src:
-            'https://images.unsplash.com/photo-1550537687-c91072c4792d?crop=entropy&fm=jpg&h=500&q=80&w=1600&cs=tinysrgb&fit=crop',
+          src: 'https://images.unsplash.com/photo-1550537687-c91072c4792d?crop=entropy&fm=jpg&h=500&q=80&w=1600&cs=tinysrgb&fit=crop',
         },
         Component: (): React.ReactElement => (
           <>
@@ -518,8 +516,7 @@ export const data: BlockSetData[] = [
         useImageBackground: true,
         backgroundImage: {
           alt: 'something',
-          src:
-            'https://images.unsplash.com/photo-1464639351491-a172c2aa2911?crop=entropy&fm=jpg&h=500&q=80&w=1600&cs=tinysrgb&fit=crop',
+          src: 'https://images.unsplash.com/photo-1464639351491-a172c2aa2911?crop=entropy&fm=jpg&h=500&q=80&w=1600&cs=tinysrgb&fit=crop',
         },
         Component: (): React.ReactElement => (
           <>
@@ -537,8 +534,7 @@ export const data: BlockSetData[] = [
         useImageBackground: true,
         backgroundImage: {
           alt: 'something',
-          src:
-            'https://images.unsplash.com/photo-1600942956976-f5a7a7cd8ff7?crop=entropy&fm=jpg&h=500&q=80&w=1600&cs=tinysrgb&fit=crop',
+          src: 'https://images.unsplash.com/photo-1600942956976-f5a7a7cd8ff7?crop=entropy&fm=jpg&h=500&q=80&w=1600&cs=tinysrgb&fit=crop',
         },
         Component: (): React.ReactElement => (
           <>
