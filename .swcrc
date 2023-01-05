@@ -1,7 +1,7 @@
 {
   "exclude": ["stories", "testUtils", "__tests__"],
   "module": {
-    "type": "es6",
+    "type": "commonjs",
     "strict": true,
     "strictMode": true
   },
@@ -12,6 +12,11 @@
     },
     "minify": {
       "compress": true
+    },
+    "transform": {
+      "react": {
+        "runtime": "automatic"
+      }
     },
     "parser": {
       "syntax": "typescript",
