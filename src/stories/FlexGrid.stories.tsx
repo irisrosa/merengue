@@ -1,6 +1,6 @@
-import { FlexGrid } from '../';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { FlexGrid } from '../../src';
 import { data } from './data';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 export default {
   title: 'FlexGrid',
