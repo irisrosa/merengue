@@ -1,7 +1,5 @@
-import React, { ComponentType, ElementType } from 'react';
+import { ElementType } from 'react';
 import { PropsWithChildren } from 'react';
-
-type Comp = ComponentType | React.FC | ElementType;
 
 export type OnClickType = () => void;
 
@@ -24,8 +22,8 @@ export type ImageType = {
 
 export interface BlockData extends ComponentInterface {
   backgroundImage?: ImageType;
-  BgComp?: Comp;
-  Component: Comp;
+  BgComp?: ElementType;
+  Component: ElementType;
   size?: number;
 }
 
@@ -35,7 +33,7 @@ export interface BlockSetData extends ComponentInterface {
   bleedBackground?: boolean;
   blocks: BlockData[];
   blockPadding?: boolean;
-  BgComp?: Comp;
+  BgComp?: ElementType;
 }
 
 export interface GridInterface extends ComponentInterface {
@@ -55,7 +53,7 @@ export interface BlockInterface
   noPadding?: boolean;
   position?: number;
   noBackground?: boolean;
-  BgComp?: Comp;
+  BgComp?: ElementType;
 }
 
 export type BlockSetContextType = Pick<BlockSetData, 'blockPadding'>;
