@@ -1,14 +1,11 @@
-import { ElementType } from 'react';
-import { PropsWithChildren } from 'react';
+import { ElementType, PropsWithChildren } from 'react';
 
 export type OnClickType = () => void;
 
-export interface ComponentProps {
+export type ComponentInterface = PropsWithChildren<{
   className?: string;
   style?: Record<string, unknown>;
-}
-
-export type ComponentInterface = PropsWithChildren<ComponentProps>;
+}>;
 
 export type ImageType = {
   alt?: string;
@@ -20,20 +17,21 @@ export type ImageType = {
   [key: string]: unknown;
 };
 
-export interface BlockData extends ComponentInterface {
+interface BlocksAndBlockSetsData extends ComponentInterface {
   backgroundImage?: ImageType;
   BgComp?: ElementType;
+}
+
+export interface BlockData extends BlocksAndBlockSetsData {
   Component: ElementType;
   size?: number;
 }
 
-export interface BlockSetData extends ComponentInterface {
-  backgroundImage?: ImageType;
+export interface BlockSetData extends BlocksAndBlockSetsData {
   bleedContent?: boolean;
   bleedBackground?: boolean;
   blocks: BlockData[];
   blockPadding?: boolean;
-  BgComp?: ElementType;
 }
 
 export interface GridInterface extends ComponentInterface {
@@ -41,15 +39,16 @@ export interface GridInterface extends ComponentInterface {
 }
 
 export interface BlockSetInterface
-  extends Pick<ComponentInterface, 'className' | 'children'>,
-    Pick<BlockSetData, 'blockPadding' | 'bleedContent' | 'bleedBackground' | 'BgComp'> {
+  extends Pick<
+    BlockSetData,
+    'blockPadding' | 'bleedContent' | 'bleedBackground' | 'BgComp' | 'className' | 'children'
+  > {
   blocks?: BlockData[];
   backgroundImage?: ImageType;
 }
 
 export interface BlockInterface
-  extends Pick<ComponentInterface, 'className' | 'children'>,
-    Pick<BlockData, 'size' | 'backgroundImage'> {
+  extends Pick<BlockData, 'size' | 'backgroundImage' | 'className' | 'children'> {
   noPadding?: boolean;
   position?: number;
   noBackground?: boolean;
