@@ -22,15 +22,15 @@ export type ImageType = {
   [key: string]: unknown;
 };
 
-export interface BlockData {
+export interface BlockData extends ComponentInterface {
+  backgroundImage?: ImageType;
+  BgComp?: Comp;
   Component: Comp;
   size?: number;
-  backgroundImage?: ImageType;
-  noBackground?: boolean;
-  [key: string]: unknown;
 }
 
-export interface BlockSetData {
+export interface BlockSetData extends ComponentInterface {
+  backgroundImage?: ImageType;
   bleedContent?: boolean;
   bleedBackground?: boolean;
   blocks: BlockData[];
@@ -58,6 +58,4 @@ export interface BlockInterface
   BgComp?: Comp;
 }
 
-export type BlockSetContextType = Pick<BlockSetData, 'blockPadding' | 'BgComp'> & {
-  hasCustomBg?: boolean;
-};
+export type BlockSetContextType = Pick<BlockSetData, 'blockPadding'>;

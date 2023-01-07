@@ -11,7 +11,7 @@ export const FlexGrid: React.FC<GridInterface> = ({ data }) => (
           data-testid="blockset"
           key={blockSetKey}
           bleedBackground={bleedBackground}
-          backgroundImage={blocks[0].useImageBackground && blocks[0].backgroundImage}
+          backgroundImage={blocks[0].backgroundImage}
           blocks={blocks}
           {...props}
         />

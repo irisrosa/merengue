@@ -35,7 +35,7 @@ const FlexGridContainer = styled.div`
 const Blocks: React.FC<Pick<BlockSetInterface, 'blocks'>> = ({ blocks }) => (
   <FlexWrap>
     {blocks.map(({ style, Component, ...block }, blockKey) => {
-      const blockProps = ['size', 'backgroundImage', 'noBackground'];
+      const blockProps = ['size', 'backgroundImage', 'BgComp'];
       return (
         <Block key={blockKey} position={blockKey} {...pick(blockProps, block)}>
           <Component {...omit(blockProps, block)} />
@@ -64,29 +64,29 @@ export const BlockSet: React.FC<BlockSetInterface> = ({
 
   const hasCustomBgImg = Boolean(backgroundImage);
   const hasCustomBgComp = Boolean(BgComp);
-  const hasCustomBg = hasCustomBgImg;
-  const BackgroundComp = hasCustomBgComp ? BgComp : Background;
   const content = bleedContent ? renderChildren() : renderContainer(renderChildren());
 
   return (
-    <BlockSetContext.Provider value={{ blockPadding, hasCustomBg, BgComp }}>
+    <BlockSetContext.Provider value={{ blockPadding }}>
       <BlockSetStyled
         data-testid="blockset"
         bleedBackground={bleedBackground || bleedContent}
         {...rest}
       >
-        {hasCustomBg ? (
-          <BackgroundComp
-            data-testid="blockset-background-image"
-            overlay
-            {...backgroundImage}
-            style={{ position: 'static' }}
+        {(hasCustomBgComp || hasCustomBgImg) && (
+          <div
+            data-testid="blockset-background"
+            style={{
+              position: 'static',
+            }}
           >
-            {content}
-          </BackgroundComp>
-        ) : (
-          content
+            {hasCustomBgComp && <BgComp data-testid="blockset-background-comp" />}
+            {hasCustomBgImg && (
+              <Background data-testid="blockset-background-image" overlay {...backgroundImage} />
+            )}
+          </div>
         )}
+        {content}
       </BlockSetStyled>
     </BlockSetContext.Provider>
   );

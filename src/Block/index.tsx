@@ -64,40 +64,31 @@ export const StyledBlock = styled.div<BlockInterface>`
 export const Block: React.FC<BlockInterface> = ({
   children,
   noPadding,
-  position,
-  noBackground,
   backgroundImage,
   BgComp,
   ...rest
 }) => {
-  const {
-    blockPadding: usePadding = !noPadding,
-    hasCustomBg: blockSetHasCustomBg,
-    BgComp: BlockSetBgComp,
-  } = useContext(BlockSetContext);
+  const { blockPadding: usePadding = !noPadding } = useContext(BlockSetContext);
 
-  const useBlockSetCustomBg = position === 0 && blockSetHasCustomBg;
   const hasCustomBgImg = Boolean(backgroundImage);
   const hasCustomBgComp = Boolean(BgComp);
-  const hasCustomBg = hasCustomBgImg || hasCustomBgComp;
-  const BackgroundComp = BgComp || BlockSetBgComp || Background;
-
-  const Content = () => <BlockContent data-testid="block-content">{children}</BlockContent>;
 
   return (
     <StyledBlock data-testid="block" noPadding={!usePadding} {...rest}>
-      {!noBackground && !useBlockSetCustomBg && hasCustomBg ? (
-        <BackgroundComp
-          data-testid="background-image"
-          style={{ position: 'static' }}
-          overlay
-          {...backgroundImage}
+      {(hasCustomBgImg || hasCustomBgComp) && (
+        <div
+          data-testid="block-background"
+          style={{
+            position: 'static',
+          }}
         >
-          <Content />
-        </BackgroundComp>
-      ) : (
-        <Content />
+          {hasCustomBgComp && <BgComp data-testid="blockset-background-comp" />}
+          {hasCustomBgImg && (
+            <Background data-testid="block-background-image" overlay {...backgroundImage} />
+          )}
+        </div>
       )}
+      <BlockContent data-testid="block-content">{children}</BlockContent>
     </StyledBlock>
   );
 };
