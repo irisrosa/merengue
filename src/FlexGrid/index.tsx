@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { BlockSet } from '../BlockSet';
-import { GridInterface } from '../types';
+import { Grid } from '../types';
 
-export const FlexGrid: React.FC<GridInterface> = ({ data }) => (
+export const FlexGrid: React.FC<Grid> = ({ data }) => (
   <>
     {Object.values(data).map(({ blocks, bleedBackground, ...props }, blockSetKey) => {
       return (

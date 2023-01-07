@@ -2,7 +2,7 @@ import { ElementType, PropsWithChildren } from 'react';
 
 export type OnClickType = () => void;
 
-export type ComponentInterface = PropsWithChildren<{
+export type ComponentProps = PropsWithChildren<{
   className?: string;
   style?: Record<string, unknown>;
 }>;
@@ -17,42 +17,31 @@ export type ImageType = {
   [key: string]: unknown;
 };
 
-interface BlocksAndBlockSetsData extends ComponentInterface {
+interface BackgroundProps {
   backgroundImage?: ImageType;
   BgComp?: ElementType;
 }
 
-export interface BlockData extends BlocksAndBlockSetsData {
+export interface BlockData extends BackgroundProps {
   Component: ElementType;
   size?: number;
 }
 
-export interface BlockSetData extends BlocksAndBlockSetsData {
+export interface BlockSetData extends BackgroundProps {
   bleedContent?: boolean;
   bleedBackground?: boolean;
   blocks: BlockData[];
   blockPadding?: boolean;
 }
 
-export interface GridInterface extends ComponentInterface {
+export interface Grid {
   data: BlockSetData[];
 }
 
-export interface BlockSetInterface
-  extends Pick<
-    BlockSetData,
-    'blockPadding' | 'bleedContent' | 'bleedBackground' | 'BgComp' | 'className' | 'children'
-  > {
-  blocks?: BlockData[];
-  backgroundImage?: ImageType;
-}
+export type BlockSetProps = ComponentProps & BackgroundProps & BlockSetData;
 
-export interface BlockInterface
-  extends Pick<BlockData, 'size' | 'backgroundImage' | 'className' | 'children'> {
+export interface BlockProps extends ComponentProps, BackgroundProps, Pick<BlockData, 'size'> {
   noPadding?: boolean;
-  position?: number;
-  noBackground?: boolean;
-  BgComp?: ElementType;
 }
 
 export type BlockSetContextType = Pick<BlockSetData, 'blockPadding'>;

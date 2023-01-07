@@ -7,9 +7,9 @@ import { Background } from '@src/Background';
 import { Block } from '@src/Block';
 import { BlockSetContext } from '@src/BlockSet/BlockSetContext';
 import { FlexWrap } from '@src/FlexWrap';
-import { BlockSetInterface } from '@src/types';
+import { BlockSetProps } from '@src/types';
 
-const BlockSetStyled = styled.div<Pick<BlockSetInterface, 'bleedBackground'>>`
+const BlockSetStyled = styled.div<Pick<BlockSetProps, 'bleedBackground'>>`
   position: relative;
   overflow: hidden;
 
@@ -32,12 +32,12 @@ const FlexGridContainer = styled.div`
   margin: 0 auto;
 `;
 
-const Blocks: React.FC<Pick<BlockSetInterface, 'blocks'>> = ({ blocks }) => (
+const Blocks: React.FC<Pick<BlockSetProps, 'blocks'>> = ({ blocks }) => (
   <FlexWrap>
-    {blocks.map(({ style, Component, ...block }, blockKey) => {
+    {blocks.map(({ Component, ...block }, blockKey) => {
       const blockProps = ['size', 'backgroundImage', 'BgComp'];
       return (
-        <Block key={blockKey} position={blockKey} {...pick(blockProps, block)}>
+        <Block key={blockKey} {...pick(blockProps, block)}>
           <Component {...omit(blockProps, block)} />
         </Block>
       );
@@ -45,7 +45,7 @@ const Blocks: React.FC<Pick<BlockSetInterface, 'blocks'>> = ({ blocks }) => (
   </FlexWrap>
 );
 
-export const BlockSet: React.FC<BlockSetInterface> = ({
+export const BlockSet: React.FC<BlockSetProps> = ({
   blocks,
   bleedContent,
   bleedBackground,

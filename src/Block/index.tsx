@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 
 import { Background } from '@src/Background';
 import { BlockSetContext } from '@src/BlockSet/BlockSetContext';
-import { BlockInterface } from '@src/types';
+import { BlockProps } from '@src/types';
 
 const BlockContent = styled.div`
   position: relative;
@@ -15,7 +15,7 @@ const BlockContent = styled.div`
   flex-basis: 100%;
 `;
 
-export const StyledBlock = styled.div<BlockInterface>`
+export const StyledBlock = styled.div<BlockProps>`
   flex-grow: 1;
   box-sizing: border-box;
   max-width: 100%;
@@ -61,7 +61,7 @@ export const StyledBlock = styled.div<BlockInterface>`
   }
 `;
 
-export const Block: React.FC<BlockInterface> = ({
+export const Block: React.FC<BlockProps> = ({
   children,
   noPadding,
   backgroundImage,

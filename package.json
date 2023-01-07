@@ -9,11 +9,11 @@
     "/build"
   ],
   "scripts": {
-    "build:swc": "yarn cleanup && swc ./src -d build && yarn types",
+    "build": "yarn cleanup && swc ./src -d build && yarn types",
     "cleanup": "rimraf build",
     "types": "tsc --project tsconfig.json",
     "test": "jest",
-    "dev": "nodemon --watch src -e \".ts, .tsx\" --exec \"yarn run build:swc && yalc push --changed --no-scripts\"",
+    "dev": "npx nodemon --watch src -e \".ts, .tsx\" --exec \"yarn run build && yalc push --changed --no-scripts\"",
     "build-storybook": "build-storybook",
     "storybook": "start-storybook -p 6006",
     "format": "prettier --write \"src/**/*.tsx\""
