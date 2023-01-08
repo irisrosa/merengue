@@ -1,0 +1,16 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+import { Block } from '../Block';
+
+<Meta title="FlexGrid/Block" component={Block} />
+
+export const Template = (args) => <Block {...args}><p>hello</p></Block>;
+
+<Canvas>
+  <p></p>
+  <Story
+    name="Block"
+    args={{}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
