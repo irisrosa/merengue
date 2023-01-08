@@ -5,8 +5,8 @@ import { BlockSetData } from '@src/types';
 export const data: { [key: string]: BlockSetData[] } = {
   basic: [
     {
-      bleedContent: false,
-      bleedBackground: false,
+      extendContent: false,
+      extendBackground: false,
       blocks: [
         {
           size: 1,

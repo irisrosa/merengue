@@ -29,8 +29,8 @@ export interface BlockData extends BackgroundProps {
 }
 
 export interface BlockSetData extends BackgroundProps {
-  bleedContent?: boolean;
-  bleedBackground?: boolean;
+  extendContent?: boolean;
+  extendBackground?: boolean;
   blocks: BlockData[];
   blockPadding?: boolean;
 }

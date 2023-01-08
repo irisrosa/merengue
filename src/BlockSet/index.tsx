@@ -9,12 +9,12 @@ import { BlockSetContext } from '@src/BlockSet/BlockSetContext';
 import { FlexWrap } from '@src/FlexWrap';
 import { BlockSetProps } from '@src/types';
 
-const BlockSetStyled = styled.div<Pick<BlockSetProps, 'bleedBackground'>>`
+const BlockSetStyled = styled.div<Pick<BlockSetProps, 'extendBackground'>>`
   position: relative;
   overflow: hidden;
 
-  ${({ bleedBackground }) =>
-    !bleedBackground &&
+  ${({ extendBackground }) =>
+    !extendBackground &&
     css`
       @media (min-width: 992px) {
         max-width: 960px;
@@ -46,8 +46,8 @@ const Container: ElementType = ({ children }) => (
 
 export const BlockSet: ElementType<BlockSetProps> = ({
   blocks,
-  bleedContent,
-  bleedBackground,
+  extendContent,
+  extendBackground,
   blockPadding,
   backgroundImage,
   BackgroundComponent,
@@ -67,13 +67,13 @@ export const BlockSet: ElementType<BlockSetProps> = ({
   const customBackground = Boolean(BackgroundComponent) && (
     <BackgroundComponent data-testid="blockset-background-comp" />
   );
-  const content = Boolean(bleedContent) ? blocksContent : <Container>{blocksContent}</Container>;
+  const content = Boolean(extendContent) ? blocksContent : <Container>{blocksContent}</Container>;
 
   return (
     <BlockSetContext.Provider value={{ blockPadding }}>
       <BlockSetStyled
         data-testid="blockset"
-        bleedBackground={bleedBackground || bleedContent}
+        extendBackground={extendBackground || extendContent}
         className={className}
         style={style}
       >
