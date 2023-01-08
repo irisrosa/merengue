@@ -25,7 +25,6 @@ export const Background = styled(BackgroundComponent)`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
   overflow: hidden;
 
   /**
