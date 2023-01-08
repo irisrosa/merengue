@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { ElementType, useContext } from 'react';
 
 import styled, { css } from 'styled-components';
 
@@ -15,7 +15,7 @@ const BlockContent = styled.div`
   flex-basis: 100%;
 `;
 
-export const StyledBlock = styled.div<BlockProps>`
+export const StyledBlock = styled.div<Pick<BlockProps, 'size' | 'noPadding'>>`
   flex-grow: 1;
   box-sizing: border-box;
   max-width: 100%;
@@ -61,34 +61,46 @@ export const StyledBlock = styled.div<BlockProps>`
   }
 `;
 
-export const Block: React.FC<BlockProps> = ({
-  children,
-  noPadding,
+export const Block: ElementType<BlockProps> = ({
   backgroundImage,
-  BgComp,
-  ...rest
+  BackgroundComponent,
+  size,
+  noPadding,
+  Content,
+  children,
+  style,
+  className,
 }) => {
   const { blockPadding: usePadding = !noPadding } = useContext(BlockSetContext);
 
-  const hasCustomBgImg = Boolean(backgroundImage);
-  const hasCustomBgComp = Boolean(BgComp);
+  const imageBackground = Boolean(backgroundImage) && (
+    <Background data-testid="block-background-image" overlay {...backgroundImage} />
+  );
+  const customBackground = Boolean(BackgroundComponent) && (
+    <BackgroundComponent data-testid="blockset-background-comp" />
+  );
+  const blockContent = Boolean(Content) ? <Content /> : children;
 
   return (
-    <StyledBlock data-testid="block" noPadding={!usePadding} {...rest}>
-      {(hasCustomBgImg || hasCustomBgComp) && (
+    <StyledBlock
+      data-testid="block"
+      noPadding={!usePadding}
+      size={size}
+      style={style}
+      className={className}
+    >
+      {(customBackground || imageBackground) && (
         <div
           data-testid="block-background"
           style={{
             position: 'static',
           }}
         >
-          {hasCustomBgComp && <BgComp data-testid="blockset-background-comp" />}
-          {hasCustomBgImg && (
-            <Background data-testid="block-background-image" overlay {...backgroundImage} />
-          )}
+          {customBackground}
+          {imageBackground}
         </div>
       )}
-      <BlockContent data-testid="block-content">{children}</BlockContent>
+      <BlockContent data-testid="block-content">{blockContent}</BlockContent>
     </StyledBlock>
   );
 };

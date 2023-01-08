@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ElementType } from 'react';
 
 import { omit, pick } from 'ramda';
 import styled, { css } from 'styled-components';
@@ -32,58 +32,60 @@ const FlexGridContainer = styled.div`
   margin: 0 auto;
 `;
 
-const Blocks: React.FC<Pick<BlockSetProps, 'blocks'>> = ({ blocks }) => (
+const Blocks: ElementType<Pick<BlockSetProps, 'blocks'>> = ({ blocks }) => (
   <FlexWrap>
-    {blocks.map(({ Component, ...block }, blockKey) => {
-      const blockProps = ['size', 'backgroundImage', 'BgComp'];
-      return (
-        <Block key={blockKey} {...pick(blockProps, block)}>
-          <Component {...omit(blockProps, block)} />
-        </Block>
-      );
-    })}
+    {blocks.map((block, blockKey) => (
+      <Block key={blockKey} {...block} />
+    ))}
   </FlexWrap>
 );
 
-export const BlockSet: React.FC<BlockSetProps> = ({
+const Container: ElementType = ({ children }) => (
+  <FlexGridContainer data-testid="flexgrid-container">{children}</FlexGridContainer>
+);
+
+export const BlockSet: ElementType<BlockSetProps> = ({
   blocks,
   bleedContent,
   bleedBackground,
   blockPadding,
-  children,
   backgroundImage,
-  BgComp,
-  ...rest
+  BackgroundComponent,
+  className,
+  style,
+  children,
 }) => {
-  const renderChildren = () =>
-    children ? <FlexWrap>{children}</FlexWrap> : <Blocks blocks={blocks} />;
-
-  const renderContainer = (components: JSX.Element | React.ReactNode) => (
-    <FlexGridContainer data-testid="flexgrid-container">{components}</FlexGridContainer>
+  const blocksContent = Boolean(blocks) ? (
+    <Blocks blocks={blocks} />
+  ) : (
+    <FlexWrap>{children}</FlexWrap>
   );
 
-  const hasCustomBgImg = Boolean(backgroundImage);
-  const hasCustomBgComp = Boolean(BgComp);
-  const content = bleedContent ? renderChildren() : renderContainer(renderChildren());
+  const imageBackground = Boolean(backgroundImage) && (
+    <Background data-testid="blockset-background-image" overlay {...backgroundImage} />
+  );
+  const customBackground = Boolean(BackgroundComponent) && (
+    <BackgroundComponent data-testid="blockset-background-comp" />
+  );
+  const content = Boolean(bleedContent) ? blocksContent : <Container>{blocksContent}</Container>;
 
   return (
     <BlockSetContext.Provider value={{ blockPadding }}>
       <BlockSetStyled
         data-testid="blockset"
         bleedBackground={bleedBackground || bleedContent}
-        {...rest}
+        className={className}
+        style={style}
       >
-        {(hasCustomBgComp || hasCustomBgImg) && (
+        {(customBackground || imageBackground) && (
           <div
             data-testid="blockset-background"
             style={{
               position: 'static',
             }}
           >
-            {hasCustomBgComp && <BgComp data-testid="blockset-background-comp" />}
-            {hasCustomBgImg && (
-              <Background data-testid="blockset-background-image" overlay {...backgroundImage} />
-            )}
+            {customBackground}
+            {imageBackground}
           </div>
         )}
         {content}

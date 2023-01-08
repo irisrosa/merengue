@@ -19,12 +19,13 @@ export type ImageType = {
 
 interface BackgroundProps {
   backgroundImage?: ImageType;
-  BgComp?: ElementType;
+  BackgroundComponent?: ElementType;
 }
 
 export interface BlockData extends BackgroundProps {
-  Component: ElementType;
-  size?: number;
+  size?: 1 | 2 | 3 | 4;
+  noPadding?: boolean;
+  Content: ElementType;
 }
 
 export interface BlockSetData extends BackgroundProps {
@@ -38,10 +39,8 @@ export interface Grid {
   data: BlockSetData[];
 }
 
-export type BlockSetProps = ComponentProps & BackgroundProps & BlockSetData;
+export type BlockSetProps = ComponentProps & Partial<BlockSetData>;
 
-export interface BlockProps extends ComponentProps, BackgroundProps, Pick<BlockData, 'size'> {
-  noPadding?: boolean;
-}
+export type BlockProps = ComponentProps & Partial<BlockData>;
 
 export type BlockSetContextType = Pick<BlockSetData, 'blockPadding'>;
