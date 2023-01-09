@@ -2,10 +2,10 @@ import React, { ElementType } from 'react';
 
 import styled, { css } from 'styled-components';
 
+import { Background } from '@src/Background';
 import { BlockSetContext } from '@src/BlockSet/BlockSetContext';
 import { BlockSetProps } from '@src/types';
 
-import { BlockSetBackground } from './BlockSetBackground';
 import { BlockSetContent } from './BlockSetContent';
 
 const BlockSetStyled = styled.div<Pick<BlockSetProps, 'extendBackground'>>`
@@ -41,7 +41,7 @@ export const BlockSet: ElementType<BlockSetProps> = ({
         className={className}
         style={style}
       >
-        <BlockSetBackground CustomComponent={BackgroundComponent} image={backgroundImage} />
+        <Background CustomComponent={BackgroundComponent} image={backgroundImage} />
         <BlockSetContent extend={extendContent}>{children}</BlockSetContent>
       </BlockSetStyled>
     </BlockSetContext.Provider>

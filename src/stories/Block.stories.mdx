@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs';
 
 import { Block } from '../Block';
+import CustomBackgroundComponent from './CustomBackgroundComponent'
 
 <Meta title="FlexGrid/Block" component={Block} />
 
@@ -8,10 +9,37 @@ export const Template = (args) => <Block {...args}><p>Mollit nisi enim nisi cupi
 
 <Canvas>
   <Story
-    name="Block"
+    name="Basic"
     args={{
       size: 1,
       noPadding: false,
+      style: {
+        border: "1px solid #ccc",
+      },
+    }}>
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Background Image"
+    args={{
+      size: 1,
+      noPadding: false,
+      backgroundImage: {
+        alt: 'something',
+        src: 'https://images.unsplash.com/photo-1558244661-d248897f7bc4?crop=entropy&fm=jpg&h=500&q=80&w=1600&cs=tinysrgb&fit=crop',
+      },
+      style: {
+        border: "1px solid #ccc",
+      },
+    }}>
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Background Component"
+    args={{
+      size: 1,
+      noPadding: false,
+      BackgroundComponent: CustomBackgroundComponent,
       style: {
         border: "1px solid #ccc",
       },

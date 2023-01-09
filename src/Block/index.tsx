@@ -72,13 +72,6 @@ export const Block: ElementType<BlockProps> = ({
 }) => {
   const { blockPadding: usePadding = !noPadding } = useContext(BlockSetContext);
 
-  const imageBackground = Boolean(backgroundImage) && (
-    <Background data-testid="block-background-image" overlay {...backgroundImage} />
-  );
-  const customBackground = Boolean(BackgroundComponent) && (
-    <BackgroundComponent data-testid="blockset-background-comp" />
-  );
-
   return (
     <StyledBlock
       data-testid="block"
@@ -87,17 +80,7 @@ export const Block: ElementType<BlockProps> = ({
       style={style}
       className={className}
     >
-      {(customBackground || imageBackground) && (
-        <div
-          data-testid="block-background"
-          style={{
-            position: 'static',
-          }}
-        >
-          {customBackground}
-          {imageBackground}
-        </div>
-      )}
+      <Background CustomComponent={BackgroundComponent} image={backgroundImage} />
       <BlockContent data-testid="block-content">{children}</BlockContent>
     </StyledBlock>
   );

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { ElementType } from 'react';
 
 import styled, { css, keyframes } from 'styled-components';
 
-import { ComponentProps } from '@src/types';
+import { ComponentProps, ImageType } from '@src/types';
 
 import { Overlay } from './Overlay';
 
@@ -19,7 +19,7 @@ const BackgroundComponent = ({ children, overlay, src, ...rest }: BackgroundInte
   </div>
 );
 
-export const Background = styled(BackgroundComponent)`
+const BackgroundStyled = styled(BackgroundComponent)`
   width: 100%;
   height: 100%;
   position: absolute;
@@ -45,3 +45,30 @@ export const Background = styled(BackgroundComponent)`
     }
   }}
 `;
+
+export const Background: ElementType<{ CustomComponent?: ElementType; image?: ImageType }> = ({
+  CustomComponent,
+  image,
+}) => {
+  const imageBackground = Boolean(image) && (
+    <BackgroundStyled data-testid="background-image" overlay {...image} />
+  );
+  const customBackground = Boolean(CustomComponent) && (
+    <CustomComponent data-testid="background-comp" />
+  );
+
+  return (
+    <>
+      {(customBackground || imageBackground) && (
+        <div
+          style={{
+            position: 'static',
+          }}
+        >
+          {customBackground}
+          {imageBackground}
+        </div>
+      )}
+    </>
+  );
+};
