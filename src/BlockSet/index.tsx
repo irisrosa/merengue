@@ -1,13 +1,12 @@
 import React, { ElementType } from 'react';
 
-import { omit, pick } from 'ramda';
 import styled, { css } from 'styled-components';
 
-import { Background } from '@src/Background';
-import { Block } from '@src/Block';
 import { BlockSetContext } from '@src/BlockSet/BlockSetContext';
-import { FlexWrap } from '@src/FlexWrap';
 import { BlockSetProps } from '@src/types';
+
+import { BlockSetBackground } from './BlockSetBackground';
+import { BlockSetContent } from './BlockSetContent';
 
 const BlockSetStyled = styled.div<Pick<BlockSetProps, 'extendBackground'>>`
   position: relative;
@@ -24,18 +23,6 @@ const BlockSetStyled = styled.div<Pick<BlockSetProps, 'extendBackground'>>`
     `}
 `;
 
-const FlexGridContainer = styled.div`
-  @media (min-width: 992px) {
-    max-width: 960px;
-  }
-  width: 100%;
-  margin: 0 auto;
-`;
-
-const Container: ElementType = ({ children }) => (
-  <FlexGridContainer data-testid="flexgrid-container">{children}</FlexGridContainer>
-);
-
 export const BlockSet: ElementType<BlockSetProps> = ({
   BackgroundComponent,
   backgroundImage,
@@ -46,16 +33,6 @@ export const BlockSet: ElementType<BlockSetProps> = ({
   extendContent,
   style,
 }) => {
-  const blocksContent = <FlexWrap>{children}</FlexWrap>;
-
-  const imageBackground = Boolean(backgroundImage) && (
-    <Background data-testid="blockset-background-image" overlay {...backgroundImage} />
-  );
-  const customBackground = Boolean(BackgroundComponent) && (
-    <BackgroundComponent data-testid="blockset-background-comp" />
-  );
-  const content = Boolean(extendContent) ? blocksContent : <Container>{blocksContent}</Container>;
-
   return (
     <BlockSetContext.Provider value={{ blockPadding }}>
       <BlockSetStyled
@@ -64,18 +41,8 @@ export const BlockSet: ElementType<BlockSetProps> = ({
         className={className}
         style={style}
       >
-        {(customBackground || imageBackground) && (
-          <div
-            data-testid="blockset-background"
-            style={{
-              position: 'static',
-            }}
-          >
-            {customBackground}
-            {imageBackground}
-          </div>
-        )}
-        {content}
+        <BlockSetBackground CustomComponent={BackgroundComponent} image={backgroundImage} />
+        <BlockSetContent extend={extendContent}>{children}</BlockSetContent>
       </BlockSetStyled>
     </BlockSetContext.Provider>
   );
