@@ -8,7 +8,7 @@ import { data } from './data';
 export default {
   title: 'FlexGrid/FlexGrid',
   component: FlexGrid,
-  args: { data: data.basic, columns: 4 },
+  args: { grid: data.basic, columns: 4 },
 } as ComponentMeta<typeof FlexGrid>;
 
 export const Basic: ComponentStory<typeof FlexGrid> = args => <FlexGrid {...args} />;
