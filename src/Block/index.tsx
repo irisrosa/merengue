@@ -34,27 +34,7 @@ export const StyledBlock = styled.div<Pick<BlockProps, 'size' | 'noPadding'>>`
       }
     `}
 
-  ${({ size }) => {
-    switch (size) {
-      case 4:
-        return css`
-          flex-basis: 100%;
-        `;
-      case 2:
-        return css`
-          flex-basis: 50%;
-        `;
-      case 3:
-        return css`
-          flex-basis: 75%;
-        `;
-      case 1:
-      default:
-        return css`
-          flex-basis: 25%;
-        `;
-    }
-  }}
+  flex-basis: ${({ size }) => (100 / 4) * size}%;
 
   @media (max-width: 767px) {
     flex-basis: 100%;
