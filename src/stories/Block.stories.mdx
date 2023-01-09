@@ -4,13 +4,18 @@ import { Block } from '../Block';
 
 <Meta title="FlexGrid/Block" component={Block} />
 
-export const Template = (args) => <Block {...args}><p>hello</p></Block>;
+export const Template = (args) => <Block {...args}><p>Mollit nisi enim nisi cupidatat ad ut cillum. Voluptate occaecat nisi nisi amet. Et velit ut aliqua labore deserunt nostrud amet consectetur ex. Ea ut commodo aliquip irure officia eiusmod nostrud reprehenderit ullamco nostrud ut.</p></Block>;
 
 <Canvas>
-  <p></p>
   <Story
     name="Block"
-    args={{}}>
+    args={{
+      size: 1,
+      noPadding: false,
+      style: {
+        border: "1px solid #ccc",
+      },
+    }}>
     {Template.bind({})}
   </Story>
 </Canvas>

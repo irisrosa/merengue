@@ -39,8 +39,8 @@ export interface Grid {
   data: BlockSetData[];
 }
 
-export type BlockSetProps = ComponentProps & Partial<BlockSetData>;
+export type BlockSetProps = ComponentProps & Omit<BlockSetData, 'blocks'>;
 
-export type BlockProps = ComponentProps & Partial<BlockData>;
+export type BlockProps = ComponentProps & Omit<BlockData, 'Content'>;
 
 export type BlockSetContextType = Pick<BlockSetData, 'blockPadding'>;

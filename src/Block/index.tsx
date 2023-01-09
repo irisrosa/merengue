@@ -66,7 +66,6 @@ export const Block: ElementType<BlockProps> = ({
   BackgroundComponent,
   size,
   noPadding,
-  Content,
   children,
   style,
   className,
@@ -79,7 +78,6 @@ export const Block: ElementType<BlockProps> = ({
   const customBackground = Boolean(BackgroundComponent) && (
     <BackgroundComponent data-testid="blockset-background-comp" />
   );
-  const blockContent = Boolean(Content) ? <Content /> : children;
 
   return (
     <StyledBlock
@@ -100,7 +98,7 @@ export const Block: ElementType<BlockProps> = ({
           {imageBackground}
         </div>
       )}
-      <BlockContent data-testid="block-content">{blockContent}</BlockContent>
+      <BlockContent data-testid="block-content">{children}</BlockContent>
     </StyledBlock>
   );
 };

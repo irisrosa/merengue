@@ -1,0 +1,77 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+import { Block } from '../Block';
+import { BlockSet } from '../BlockSet';
+import CustomBackgroundComponent from './CustomBackgroundComponent'
+
+<Meta title="FlexGrid/BlockSet" component={Block} />
+
+export const Template = (args) => <BlockSet {...args}>
+<Block>Sit incididunt eu pariatur proident ipsum amet amet aute adipisicing proident adipisicing. Nulla dolore sint ex excepteur sunt eu qui. Fugiat quis velit proident ipsum labore sunt labore. Minim nisi eiusmod mollit Lorem occaecat. Eu amet et exercitation consequat sit esse ipsum consectetur laboris magna duis pariatur. Incididunt cillum veniam ullamco amet proident duis deserunt reprehenderit veniam laboris esse proident duis. Sit in magna culpa deserunt culpa duis est magna ullamco amet commodo.</Block>
+<Block>Sit incididunt eu pariatur proident ipsum amet amet aute adipisicing proident adipisicing. Nulla dolore sint ex excepteur sunt eu qui. Fugiat quis velit proident ipsum labore sunt labore. Minim nisi eiusmod mollit Lorem occaecat. Eu amet et exercitation consequat sit esse ipsum consectetur laboris magna duis pariatur. Incididunt cillum veniam ullamco amet proident duis deserunt reprehenderit veniam laboris esse proident duis. Sit in magna culpa deserunt culpa duis est magna ullamco amet commodo.</Block>
+<Block>Sit incididunt eu pariatur proident ipsum amet amet aute adipisicing proident adipisicing. Nulla dolore sint ex excepteur sunt eu qui. Fugiat quis velit proident ipsum labore sunt labore. Minim nisi eiusmod mollit Lorem occaecat. Eu amet et exercitation consequat sit esse ipsum consectetur laboris magna duis pariatur. Incididunt cillum veniam ullamco amet proident duis deserunt reprehenderit veniam laboris esse proident duis. Sit in magna culpa deserunt culpa duis est magna ullamco amet commodo.</Block>
+</BlockSet>;
+
+export const TemplateMultiline = (args) => <BlockSet {...args}>
+  <Block>1</Block>
+  <Block size={2}>2</Block>
+  <Block size={4}>4</Block>
+  <Block size={3}>3</Block>
+  <Block>1</Block>
+</BlockSet>
+
+<Canvas>
+  <Story
+    name="Basic"
+    args={{
+      extendContent: false,
+      extendBackground: false,
+      blockPadding: true,
+      style: {
+        border: "1px solid #ccc",
+      },
+    }}>
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Background Image"
+    args={{
+      extendContent: false,
+      extendBackground: false,
+      blockPadding: true,
+      backgroundImage: {
+        alt: 'something',
+        src: 'https://images.unsplash.com/photo-1558244661-d248897f7bc4?crop=entropy&fm=jpg&h=500&q=80&w=1600&cs=tinysrgb&fit=crop',
+      },
+      style: {
+        border: "1px solid #ccc",
+      },
+    }}>
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Background Component"
+    args={{
+      extendContent: false,
+      extendBackground: false,
+      blockPadding: true,
+      BackgroundComponent: CustomBackgroundComponent,
+      style: {
+        border: "1px solid #ccc",
+      },
+    }}>
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Multiline"
+    args={{
+      extendContent: false,
+      extendBackground: false,
+      blockPadding: true,
+      style: {
+        border: "1px solid #ccc",
+      },
+    }}>
+    {TemplateMultiline.bind({})}
+  </Story>
+</Canvas>

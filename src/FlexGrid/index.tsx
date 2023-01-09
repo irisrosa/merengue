@@ -1,12 +1,16 @@
 import React from 'react';
 
+import { Blocks } from '@src/Blocks';
+
 import { BlockSet } from '../BlockSet';
 import { Grid } from '../types';
 
 export const FlexGrid: React.FC<Grid> = ({ data }) => (
   <>
-    {Object.values(data).map((props, blockSetKey) => (
-      <BlockSet data-testid="blockset" key={blockSetKey} {...props} />
+    {Object.values(data).map(({ blocks, ...props }, blockSetKey) => (
+      <BlockSet data-testid="blockset" key={blockSetKey} {...props}>
+        <Blocks blocks={blocks} />
+      </BlockSet>
     ))}
   </>
 );

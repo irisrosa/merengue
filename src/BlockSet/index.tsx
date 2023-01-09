@@ -32,20 +32,11 @@ const FlexGridContainer = styled.div`
   margin: 0 auto;
 `;
 
-const Blocks: ElementType<Pick<BlockSetProps, 'blocks'>> = ({ blocks }) => (
-  <FlexWrap>
-    {blocks.map((block, blockKey) => (
-      <Block key={blockKey} {...block} />
-    ))}
-  </FlexWrap>
-);
-
 const Container: ElementType = ({ children }) => (
   <FlexGridContainer data-testid="flexgrid-container">{children}</FlexGridContainer>
 );
 
 export const BlockSet: ElementType<BlockSetProps> = ({
-  blocks,
   extendContent,
   extendBackground,
   blockPadding,
@@ -55,11 +46,7 @@ export const BlockSet: ElementType<BlockSetProps> = ({
   style,
   children,
 }) => {
-  const blocksContent = Boolean(blocks) ? (
-    <Blocks blocks={blocks} />
-  ) : (
-    <FlexWrap>{children}</FlexWrap>
-  );
+  const blocksContent = <FlexWrap>{children}</FlexWrap>;
 
   const imageBackground = Boolean(backgroundImage) && (
     <Background data-testid="blockset-background-image" overlay {...backgroundImage} />
