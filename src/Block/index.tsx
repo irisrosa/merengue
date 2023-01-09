@@ -16,9 +16,13 @@ const BlockContent = styled.div`
   flex-basis: 100%;
 `;
 
-export const StyledBlock = styled.div<
-  Pick<BlockProps, 'size' | 'noPadding'> & Pick<BlockSetContextType, 'columns'>
->`
+type StyledBlockProps = {
+  $size: BlockProps['size'];
+  $noPadding: BlockProps['noPadding'];
+  $columns: BlockSetContextType['columns'];
+};
+
+export const StyledBlock = styled.div<StyledBlockProps>`
   flex-grow: 1;
   box-sizing: border-box;
   max-width: 100%;
@@ -26,8 +30,8 @@ export const StyledBlock = styled.div<
   display: flex;
   flex-direction: column;
 
-  ${({ noPadding }) =>
-    !noPadding &&
+  ${({ $noPadding }) =>
+    !$noPadding &&
     css`
       ${BlockContent} {
         padding: 10px;
@@ -37,7 +41,7 @@ export const StyledBlock = styled.div<
       }
     `}
 
-  flex-basis: ${({ size, columns }) => (100 / Math.trunc(columns)) * Math.trunc(size)}%;
+  flex-basis: ${({ $size, $columns }) => (100 / Math.trunc($columns)) * Math.trunc($size)}%;
 
   @media (max-width: 767px) {
     flex-basis: 100%;
@@ -58,9 +62,9 @@ export const Block: ElementType<BlockProps> = ({
 
   return (
     <StyledBlock
-      noPadding={!usePadding}
-      size={size}
-      columns={columns}
+      $noPadding={!usePadding}
+      $size={size}
+      $columns={columns}
       style={style}
       className={className}
     >
