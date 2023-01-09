@@ -14,4 +14,9 @@ export const Template = (args) => <FlexGrid {...args} />;
     args={{data: data.basic}}>
     {Template.bind({})}
   </Story>
+  <Story
+    name="Custom columns"
+    args={{data: data.basic, columns: 2}}>
+    {Template.bind({})}
+  </Story>
 </Canvas>

@@ -29,12 +29,13 @@ export const BlockSet: ElementType<BlockSetProps> = ({
   blockPadding,
   children,
   className,
+  columns,
   extendBackground,
   extendContent,
   style,
 }) => {
   return (
-    <BlockSetContext.Provider value={{ blockPadding }}>
+    <BlockSetContext.Provider value={{ blockPadding, columns }}>
       <BlockSetStyled
         extendBackground={extendBackground || extendContent}
         className={className}

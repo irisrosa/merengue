@@ -74,4 +74,17 @@ export const TemplateMultiline = (args) => <BlockSet {...args}>
     }}>
     {TemplateMultiline.bind({})}
   </Story>
+  <Story
+    name="Custom Columns"
+    args={{
+      columns: 2,
+      extendContent: false,
+      extendBackground: false,
+      blockPadding: true,
+      style: {
+        border: "1px solid #ccc",
+      },
+    }}>
+    {Template.bind({})}
+  </Story>
 </Canvas>

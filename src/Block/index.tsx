@@ -4,7 +4,8 @@ import styled, { css } from 'styled-components';
 
 import { Background } from '@src/Background';
 import { BlockSetContext } from '@src/BlockSet/BlockSetContext';
-import { BlockProps } from '@src/types';
+import { DEFAULT_COLUMNS } from '@src/constants';
+import { BlockProps, BlockSetContextType } from '@src/types';
 
 const BlockContent = styled.div`
   position: relative;
@@ -15,7 +16,9 @@ const BlockContent = styled.div`
   flex-basis: 100%;
 `;
 
-export const StyledBlock = styled.div<Pick<BlockProps, 'size' | 'noPadding'>>`
+export const StyledBlock = styled.div<
+  Pick<BlockProps, 'size' | 'noPadding'> & Pick<BlockSetContextType, 'columns'>
+>`
   flex-grow: 1;
   box-sizing: border-box;
   max-width: 100%;
@@ -34,7 +37,7 @@ export const StyledBlock = styled.div<Pick<BlockProps, 'size' | 'noPadding'>>`
       }
     `}
 
-  flex-basis: ${({ size }) => (100 / 4) * size}%;
+  flex-basis: ${({ size, columns }) => (100 / Math.trunc(columns)) * Math.trunc(size)}%;
 
   @media (max-width: 767px) {
     flex-basis: 100%;
@@ -47,13 +50,20 @@ export const Block: ElementType<BlockProps> = ({
   children,
   className,
   noPadding,
-  size,
+  size = 1,
   style,
 }) => {
-  const { blockPadding: usePadding = !noPadding } = useContext(BlockSetContext);
+  const { blockPadding: usePadding = !noPadding, columns = DEFAULT_COLUMNS } =
+    useContext(BlockSetContext);
 
   return (
-    <StyledBlock noPadding={!usePadding} size={size} style={style} className={className}>
+    <StyledBlock
+      noPadding={!usePadding}
+      size={size}
+      columns={columns}
+      style={style}
+      className={className}
+    >
       <Background CustomComponent={BackgroundComponent} image={backgroundImage} />
       <BlockContent data-testid="block-content">{children}</BlockContent>
     </StyledBlock>
