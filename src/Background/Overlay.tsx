@@ -1,4 +1,3 @@
-import { transparentize } from 'polished';
 import styled from 'styled-components';
 
 import { ComponentProps } from '@src/types';
@@ -10,6 +9,6 @@ export const Overlay = styled.div<ComponentProps>`
   right: 0;
   bottom: 0;
   z-index: -1;
-  background: ${({ theme }) => transparentize(0.45, '#4B4B4B')};
+  background: rgba(75, 75, 75, 0.45);
   z-index: 0;
 `;
