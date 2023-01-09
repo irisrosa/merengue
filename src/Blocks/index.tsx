@@ -1,8 +1,8 @@
 import { ElementType } from 'react';
 
+import { Block } from '@src/Block';
+import { FlexWrap } from '@src/FlexWrap';
 import { BlockSetData } from '@src/types';
-
-import { FlexWrap, Block } from '..';
 
 export const Blocks: ElementType<Pick<BlockSetData, 'blocks'>> = ({ blocks }) => (
   <FlexWrap>
