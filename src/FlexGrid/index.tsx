@@ -8,7 +8,7 @@ import { Grid } from '../types';
 export const FlexGrid: React.FC<Grid> = ({ data }) => (
   <>
     {Object.values(data).map(({ blocks, ...props }, blockSetKey) => (
-      <BlockSet data-testid="blockset" key={blockSetKey} {...props}>
+      <BlockSet key={blockSetKey} {...props}>
         <Blocks blocks={blocks} />
       </BlockSet>
     ))}

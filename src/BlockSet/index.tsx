@@ -36,7 +36,6 @@ export const BlockSet: ElementType<BlockSetProps> = ({
   return (
     <BlockSetContext.Provider value={{ blockPadding }}>
       <BlockSetStyled
-        data-testid="blockset"
         extendBackground={extendBackground || extendContent}
         className={className}
         style={style}

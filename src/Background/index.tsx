@@ -50,12 +50,8 @@ export const Background: ElementType<{ CustomComponent?: ElementType; image?: Im
   CustomComponent,
   image,
 }) => {
-  const imageBackground = Boolean(image) && (
-    <BackgroundStyled data-testid="background-image" overlay {...image} />
-  );
-  const customBackground = Boolean(CustomComponent) && (
-    <CustomComponent data-testid="background-comp" />
-  );
+  const imageBackground = Boolean(image) && <BackgroundStyled overlay {...image} />;
+  const customBackground = Boolean(CustomComponent) && <CustomComponent />;
 
   return (
     <>

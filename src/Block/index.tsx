@@ -73,13 +73,7 @@ export const Block: ElementType<BlockProps> = ({
   const { blockPadding: usePadding = !noPadding } = useContext(BlockSetContext);
 
   return (
-    <StyledBlock
-      data-testid="block"
-      noPadding={!usePadding}
-      size={size}
-      style={style}
-      className={className}
-    >
+    <StyledBlock noPadding={!usePadding} size={size} style={style} className={className}>
       <Background CustomComponent={BackgroundComponent} image={backgroundImage} />
       <BlockContent data-testid="block-content">{children}</BlockContent>
     </StyledBlock>
