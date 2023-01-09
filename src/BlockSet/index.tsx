@@ -37,14 +37,14 @@ const Container: ElementType = ({ children }) => (
 );
 
 export const BlockSet: ElementType<BlockSetProps> = ({
-  extendContent,
-  extendBackground,
-  blockPadding,
-  backgroundImage,
   BackgroundComponent,
-  className,
-  style,
+  backgroundImage,
+  blockPadding,
   children,
+  className,
+  extendBackground,
+  extendContent,
+  style,
 }) => {
   const blocksContent = <FlexWrap>{children}</FlexWrap>;
 

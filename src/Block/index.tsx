@@ -62,13 +62,13 @@ export const StyledBlock = styled.div<Pick<BlockProps, 'size' | 'noPadding'>>`
 `;
 
 export const Block: ElementType<BlockProps> = ({
-  backgroundImage,
   BackgroundComponent,
-  size,
-  noPadding,
+  backgroundImage,
   children,
-  style,
   className,
+  noPadding,
+  size,
+  style,
 }) => {
   const { blockPadding: usePadding = !noPadding } = useContext(BlockSetContext);
 

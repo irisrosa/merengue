@@ -8,31 +8,31 @@ export type ComponentProps = PropsWithChildren<{
 }>;
 
 export type ImageType = {
+  [key: string]: unknown;
   alt?: string;
+  aspectRatio?: number;
+  base64?: string;
+  sizes?: string;
   src: string;
   srcSet?: string;
-  sizes?: string;
-  base64?: string;
-  aspectRatio?: number;
-  [key: string]: unknown;
 };
 
 interface BackgroundProps {
-  backgroundImage?: ImageType;
   BackgroundComponent?: ElementType;
+  backgroundImage?: ImageType;
 }
 
 export interface BlockData extends BackgroundProps {
-  size?: 1 | 2 | 3 | 4;
-  noPadding?: boolean;
   Content: ElementType;
+  noPadding?: boolean;
+  size?: 1 | 2 | 3 | 4;
 }
 
 export interface BlockSetData extends BackgroundProps {
-  extendContent?: boolean;
-  extendBackground?: boolean;
-  blocks: BlockData[];
   blockPadding?: boolean;
+  blocks: BlockData[];
+  extendBackground?: boolean;
+  extendContent?: boolean;
 }
 
 export interface Grid {
