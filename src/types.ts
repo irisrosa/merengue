@@ -1,7 +1,5 @@
 import { ElementType, PropsWithChildren } from 'react';
 
-export type OnClickType = () => void;
-
 export type ComponentProps = PropsWithChildren<{
   className?: string;
   style?: Record<string, unknown>;
