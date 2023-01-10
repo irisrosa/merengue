@@ -4,17 +4,19 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Block } from '../Block';
 import { BlockSet } from '../BlockSet';
+import { theme } from '../defaultTheme';
 import CustomBackgroundComponent from './CustomBackgroundComponent';
 
 export default {
   title: 'FlexGrid/BlockSet',
   component: BlockSet,
   args: {
-    maxWidth: 960,
-    columns: 4,
+    options: {
+      ...theme,
+      blockPadding: true,
+    },
     extendContent: false,
     extendBackground: false,
-    blockPadding: true,
     style: {
       border: '1px solid #ccc',
     },

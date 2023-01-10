@@ -9,7 +9,7 @@ export const data: { [key: string]: BlockSetData[] } = {
       extendBackground: false,
       blocks: [
         {
-          size: 1,
+          size: 2,
           noPadding: false,
           Content: (): React.ReactElement => (
             <div>

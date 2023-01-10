@@ -1,11 +1,9 @@
-import React, { ElementType, useContext } from 'react';
+import React, { ElementType } from 'react';
 
-import styled, { css } from 'styled-components';
+import styled, { css, useTheme } from 'styled-components';
 
 import { Background } from '@src/Background';
-import { BlockSetContext } from '@src/BlockSet/BlockSetContext';
-import { DEFAULT_COLUMNS } from '@src/constants';
-import { BlockProps, BlockSetContextType } from '@src/types';
+import { BlockProps } from '@src/types';
 
 const BlockContent = styled.div`
   position: relative;
@@ -19,7 +17,6 @@ const BlockContent = styled.div`
 type StyledBlockProps = {
   $size: BlockProps['size'];
   $noPadding: BlockProps['noPadding'];
-  $columns: BlockSetContextType['columns'];
 };
 
 export const StyledBlock = styled.div<StyledBlockProps>`
@@ -30,20 +27,21 @@ export const StyledBlock = styled.div<StyledBlockProps>`
   display: flex;
   flex-direction: column;
 
-  ${({ $noPadding }) =>
+  ${({ $noPadding, theme }) =>
     !$noPadding &&
+    theme.blockPadding &&
     css`
       ${BlockContent} {
         padding: 10px;
-        @media (min-width: 767px) {
+        @media (min-width: ${theme.breakPoints.small}px) {
           padding: 20px;
         }
       }
     `}
 
-  flex-basis: ${({ $size, $columns }) => (100 / Math.trunc($columns)) * Math.trunc($size)}%;
+  flex-basis: ${({ $size, theme }) => (100 / Math.trunc(theme.columns)) * Math.trunc($size)}%;
 
-  @media (max-width: 767px) {
+  @media (max-width: ${({ theme }) => theme.breakPoints.small}px) {
     flex-basis: 100%;
   }
 `;
@@ -56,20 +54,9 @@ export const Block: ElementType<BlockProps> = ({
   noPadding,
   size = 1,
   style,
-}) => {
-  const { blockPadding: usePadding = !noPadding, columns = DEFAULT_COLUMNS } =
-    useContext(BlockSetContext);
-
-  return (
-    <StyledBlock
-      $noPadding={!usePadding}
-      $size={size}
-      $columns={columns}
-      style={style}
-      className={className}
-    >
-      <Background CustomComponent={BackgroundComponent} image={backgroundImage} />
-      <BlockContent data-testid="block-content">{children}</BlockContent>
-    </StyledBlock>
-  );
-};
+}) => (
+  <StyledBlock $noPadding={noPadding} $size={size} className={className} style={style}>
+    <Background CustomComponent={BackgroundComponent} image={backgroundImage} />
+    <BlockContent data-testid="block-content">{children}</BlockContent>
+  </StyledBlock>
+);

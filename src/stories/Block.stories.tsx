@@ -1,8 +1,10 @@
 import React from 'react';
 
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ThemeProvider } from 'styled-components';
 
 import { Block } from '../Block';
+import { theme } from '../defaultTheme';
 import CustomBackgroundComponent from './CustomBackgroundComponent';
 
 export default {
@@ -15,6 +17,13 @@ export default {
       border: '1px solid #ccc',
     },
   },
+  decorators: [
+    Story => (
+      <ThemeProvider theme={theme}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 } as ComponentMeta<typeof Block>;
 
 const text = `Ut qui exercitation non incididunt eu fugiat consectetur dolore laboris occaecat laborum. Enim
