@@ -10,6 +10,7 @@ export default {
   title: 'FlexGrid/BlockSet',
   component: BlockSet,
   args: {
+    maxWidth: 960,
     columns: 4,
     extendContent: false,
     extendBackground: false,

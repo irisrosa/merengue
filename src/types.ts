@@ -33,15 +33,17 @@ export interface BlockSetData extends BackgroundProps {
   extendContent?: boolean;
 }
 
-export interface GridData {
-  grid: BlockSetData[];
+export type GridOptions = {
   columns?: number;
-}
+  maxWidth?: number;
+};
 
-export type BlockSetProps = ComponentProps &
-  Omit<BlockSetData, 'blocks'> &
-  Pick<GridData, 'columns'>;
+export type GridData = GridOptions & {
+  grid: BlockSetData[];
+};
+
+export type BlockSetProps = ComponentProps & Omit<BlockSetData, 'blocks'> & GridOptions;
 
 export type BlockProps = ComponentProps & Omit<BlockData, 'Content'>;
 
-export type BlockSetContextType = Pick<BlockSetData, 'blockPadding'> & Pick<GridData, 'columns'>;
+export type BlockSetContextType = Pick<BlockSetData, 'blockPadding'> & GridOptions;

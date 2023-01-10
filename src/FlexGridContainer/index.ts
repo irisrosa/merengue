@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
-export const FlexGridContainer = styled.div`
+import { GridOptions } from '@src/types';
+
+export const FlexGridContainer = styled.div<{ $maxWidth: GridOptions['maxWidth'] }>`
   @media (min-width: 992px) {
-    max-width: 960px;
+    max-width: ${({ $maxWidth }) => $maxWidth}px;
   }
   width: 100%;
   margin: 0 auto;
