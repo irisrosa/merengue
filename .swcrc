@@ -11,7 +11,9 @@
       "@src/*": ["./*"]
     },
     "minify": {
-      "compress": true
+      "compress": {
+        "drop_console": true
+      }
     },
     "transform": {
       "react": {
