@@ -12,7 +12,7 @@ export default {
   component: BlockSet,
   args: {
     options: {
-      ...theme,
+      columns: 3,
       blockPadding: true,
     },
     extendContent: false,

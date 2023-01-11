@@ -35,12 +35,16 @@ export const BlockSet: ElementType<BlockSetProps> = ({
   extendBackground,
   extendContent,
   style,
-  options = defaultTheme,
+  options,
 }) => {
   const theme = useTheme();
-
+  console.log({
+    options,
+    theme,
+    defaultTheme,
+  });
   return (
-    <ThemeProvider theme={{ ...theme, ...options }}>
+    <ThemeProvider theme={{ ...defaultTheme, ...theme, ...options }}>
       <BlockSetStyled
         $extendBackground={extendBackground || extendContent}
         className={className}
