@@ -12,6 +12,8 @@ export default {
   component: Block,
   args: {
     size: 1,
+    blockPadding: '10px',
+    style: {},
   },
   decorators: [
     Story => (
@@ -20,6 +22,23 @@ export default {
       </ThemeProvider>
     ),
   ],
+  argTypes: {
+    size: {
+      type: 'number',
+      description: 'How many columns the Block uses.',
+      table: {
+        defaultValue: { summary: '1' },
+      },
+    },
+    blockPadding: {
+      type: 'string',
+      description:
+        'Internal padding applied to the Block. Accepts `false` or a definition such as `10px`.',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+    },
+  },
 } as ComponentMeta<typeof Block>;
 
 const text = `Ut qui exercitation non incididunt eu fugiat consectetur dolore laboris occaecat laborum. Enim

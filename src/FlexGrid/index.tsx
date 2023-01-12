@@ -9,7 +9,7 @@ import { theme } from '../defaultTheme';
 import { FlexGridProps } from '../types';
 
 export const FlexGrid: ElementType<FlexGridProps> = ({
-  grid,
+  blocks,
   children,
   style,
   className,
@@ -18,7 +18,7 @@ export const FlexGrid: ElementType<FlexGridProps> = ({
   <>
     <ThemeProvider theme={{ ...theme, ...options }}>
       <BlockSet>
-        {grid && <Blocks grid={grid} />}
+        {blocks && <Blocks blocks={blocks} />}
         {children}
       </BlockSet>
     </ThemeProvider>

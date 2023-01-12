@@ -11,7 +11,7 @@ import { BlockSetProps } from '@src/types';
 
 const BlockSetStyled = styled.div`
   display: grid;
-  gap: 1rem;
+  gap: ${({ theme }) => theme.gap && `${theme.gap}`};
   grid-template-columns: repeat(${({ theme }) => theme.columns}, 1fr);
 
   @media (min-width: ${({ theme }) => theme.breakPoints.large}px) {

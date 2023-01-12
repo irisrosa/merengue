@@ -23,14 +23,14 @@ interface BackgroundProps {
 }
 
 export interface BlockData extends BackgroundProps {
-  blockPadding?: boolean | string;
+  blockPadding?: false | string;
   Content: ElementType;
   size?: number;
 }
 
 export type GridOptions = {
-  blockPadding?: boolean | string;
-  gap?: boolean;
+  blockPadding?: false | string;
+  gap?: false | string;
   columns?: number;
   maxWidth?: number;
   breakPoints?: {
@@ -41,7 +41,7 @@ export type GridOptions = {
 
 export type GridData = BackgroundProps &
   GridOptions & {
-    grid: BlockData[];
+    blocks: BlockData[];
     // extendBackground?: boolean;
     // extendContent?: boolean;
   };

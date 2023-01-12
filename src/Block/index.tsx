@@ -12,6 +12,7 @@ const BlockContent = styled.div`
 
 type StyledBlockProps = {
   $size: BlockProps['size'];
+  $blockPadding: BlockProps['blockPadding'];
 };
 
 export const StyledBlock = styled.div<StyledBlockProps>`
@@ -19,14 +20,12 @@ export const StyledBlock = styled.div<StyledBlockProps>`
   grid-column: span ${({ $size }) => $size};
 
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(${({ theme }) => theme.columns}, 1fr);
 
-  ${({ theme }) =>
-    theme.blockPadding &&
+  ${({ theme, $blockPadding }) =>
+    ($blockPadding || theme.blockPadding) &&
     css`
       ${BlockContent} {
-        padding: 0.5rem;
+        padding: ${({ theme }) => `${$blockPadding || theme.blockPadding}`};
         @media (min-width: ${theme.breakPoints.small}px) {
           padding: 1rem;
         }
@@ -41,12 +40,19 @@ export const StyledBlock = styled.div<StyledBlockProps>`
 export const Block: ElementType<BlockProps> = ({
   BackgroundComponent,
   backgroundImage,
+  blockPadding,
   children,
   className,
   size = 1,
   style,
 }) => (
-  <StyledBlock $size={size} className={className} style={style} data-id="block">
+  <StyledBlock
+    $blockPadding={blockPadding}
+    $size={size}
+    className={className}
+    style={style}
+    data-id="block"
+  >
     <Background CustomComponent={BackgroundComponent} image={backgroundImage} />
     <BlockContent data-testid="block-content">{children}</BlockContent>
   </StyledBlock>
