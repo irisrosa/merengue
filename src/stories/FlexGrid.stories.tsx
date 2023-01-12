@@ -27,5 +27,5 @@ export const Components: ComponentStory<typeof FlexGrid> = (args: FlexGridProps)
   </FlexGrid>
 );
 Components.args = {
-  options: { columns: 6 },
+  columns: 6,
 };

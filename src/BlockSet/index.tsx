@@ -5,11 +5,11 @@ import styled, { css } from 'styled-components';
 import { Background } from '@src/Background';
 import { BlockSetProps } from '@src/types';
 
-type BlockSetStyledProps = {
-  $extendBackground: BlockSetProps['extendBackground'];
-};
+// type BlockSetStyledProps = {
+//   $extendBackground: FlexGridProps['extendBackground'];
+// };
 
-const BlockSetStyled = styled.div<BlockSetStyledProps>`
+const BlockSetStyled = styled.div`
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(${({ theme }) => theme.columns}, 1fr);
@@ -37,21 +37,21 @@ const BlockSetStyled = styled.div<BlockSetStyledProps>`
 // `;
 
 export const BlockSet: ElementType<BlockSetProps> = ({
-  BackgroundComponent,
-  backgroundImage,
+  // BackgroundComponent,
+  // backgroundImage,
   children,
   className,
-  extendBackground,
-  extendContent,
+  // extendBackground,
+  // extendContent,
   style,
 }) => (
   <BlockSetStyled
     data-id="blockset"
-    $extendBackground={extendBackground || extendContent}
+    // $extendBackground={extendBackground || extendContent}
     className={className}
     style={style}
   >
-    <Background CustomComponent={BackgroundComponent} image={backgroundImage} />
+    {/* <Background CustomComponent={BackgroundComponent} image={backgroundImage} /> */}
     {children}
   </BlockSetStyled>
 );

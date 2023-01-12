@@ -1,11 +1,11 @@
 import { ElementType } from 'react';
 
 import { Block } from '@src/Block';
-import { BlockSetData } from '@src/types';
+import { GridData } from '@src/types';
 
-export const Blocks: ElementType<Pick<BlockSetData, 'blocks'>> = ({ blocks }) => (
+export const Blocks: ElementType<Pick<GridData, 'grid'>> = ({ grid }) => (
   <>
-    {blocks.map(({ Content, ...block }, blockKey) => (
+    {grid.map(({ Content, ...block }, blockKey) => (
       <Block key={blockKey} {...block}>
         <Content />
       </Block>
