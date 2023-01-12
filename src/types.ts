@@ -1,4 +1,4 @@
-import { ElementType, PropsWithChildren } from 'react';
+import { DOMElement, ElementType, PropsWithChildren } from 'react';
 
 import { CSSProperties, DefaultTheme } from 'styled-components';
 
@@ -28,6 +28,40 @@ export interface BlockData extends BackgroundProps {
   size?: number;
 }
 
+type AllowedTags = keyof Pick<
+  HTMLElementTagNameMap,
+  | 'address'
+  | 'article'
+  | 'aside'
+  | 'br'
+  | 'colgroup'
+  | 'col'
+  | 'dl'
+  | 'dt'
+  | 'dd'
+  | 'details'
+  | 'div'
+  | 'figure'
+  | 'footer'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'header'
+  | 'img'
+  | 'main'
+  | 'nav'
+  | 'ol'
+  | 'li'
+  | 'p'
+  | 'picture'
+  | 'section'
+  | 'span'
+  | 'summary'
+>;
+
 export type GridOptions = {
   blockPadding?: false | string;
   gap?: false | string;
@@ -36,6 +70,10 @@ export type GridOptions = {
   breakPoints?: {
     small: number;
     large: number;
+  };
+  domMapping?: {
+    wrapper: AllowedTags;
+    block: AllowedTags;
   };
 };
 

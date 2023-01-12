@@ -1,6 +1,6 @@
 import React, { ElementType } from 'react';
 
-import styled, { css } from 'styled-components';
+import styled, { css, useTheme } from 'styled-components';
 
 import { Background } from '@src/Background';
 import { BlockProps } from '@src/types';
@@ -10,12 +10,17 @@ const BlockContent = styled.div`
   z-index: 1;
 `;
 
+const BlockElement: ElementType<BlockProps> = props => {
+  const theme = useTheme();
+  return React.createElement(theme.domMapping.block, props, [props.children]);
+};
+
 type StyledBlockProps = {
   $size: BlockProps['size'];
   $blockPadding: BlockProps['blockPadding'];
 };
 
-export const StyledBlock = styled.div<StyledBlockProps>`
+export const StyledBlock = styled(BlockElement)<StyledBlockProps>`
   position: relative;
   grid-column: span ${({ $size }) => $size};
 
