@@ -6,14 +6,20 @@ import { Blocks } from '@src/Blocks';
 
 import { BlockSet } from '../BlockSet';
 import { theme } from '../defaultTheme';
-import { GridData } from '../types';
+import { FlexGridProps } from '../types';
 
-export const FlexGrid: ElementType<GridData> = ({ grid, options: flexGridOptions }) => (
-  <ThemeProvider theme={{ ...theme, ...flexGridOptions }}>
-    {Object.values(grid).map(({ blocks, options: blockSetOptions, ...props }, blockSetKey) => (
-      <BlockSet key={blockSetKey} options={{ ...flexGridOptions, ...blockSetOptions }} {...props}>
-        <Blocks blocks={blocks} />
+export const FlexGrid: ElementType<FlexGridProps> = ({
+  grid: { blocks, ...gridSettings } = {},
+  options,
+  children,
+  ...props
+}) => (
+  <>
+    <ThemeProvider theme={{ ...theme, ...options }}>
+      <BlockSet {...{ ...gridSettings, ...props }}>
+        {blocks && <Blocks blocks={blocks} />}
+        {children}
       </BlockSet>
-    ))}
-  </ThemeProvider>
+    </ThemeProvider>
+  </>
 );

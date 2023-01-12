@@ -12,10 +12,6 @@ export default {
   component: Block,
   args: {
     size: 1,
-    noPadding: false,
-    style: {
-      border: '1px solid #ccc',
-    },
   },
   decorators: [
     Story => (

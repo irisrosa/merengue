@@ -12,7 +12,7 @@ export default {
   component: BlockSet,
   args: {
     options: {
-      columns: 3,
+      columns: 4,
       blockPadding: true,
     },
     extendContent: false,
@@ -34,7 +34,7 @@ labore. Minim nisi eiusmod mollit Lorem occaecat. Eu amet et exercitation conseq
 ipsum consectetur laboris magna duis pariatur. Incididunt cillum veniam ullamco amet
 proident duis deserunt reprehenderit veniam laboris esse proident duis. Sit in magna culpa
 deserunt culpa duis est magna ullamco amet commodo.`,
-}) => <Block style={blockStyle}>{text}</Block>;
+}) => <Block>{text}</Block>;
 
 export const Basic: ComponentStory<typeof BlockSet> = args => (
   <BlockSet {...args}>

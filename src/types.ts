@@ -1,8 +1,10 @@
 import { ElementType, PropsWithChildren } from 'react';
 
+import { CSSProperties } from 'styled-components';
+
 export type ComponentProps = PropsWithChildren<{
   className?: string;
-  style?: Record<string, unknown>;
+  style?: CSSProperties;
 }>;
 
 export type ImageType = {
@@ -21,20 +23,20 @@ interface BackgroundProps {
 }
 
 export interface BlockData extends BackgroundProps {
+  blockPadding?: boolean | string;
   Content: ElementType;
-  noPadding?: boolean;
-  size?: 1 | 2 | 3 | 4;
+  size?: number;
 }
 
 export interface BlockSetData extends BackgroundProps {
   blocks: BlockData[];
   extendBackground?: boolean;
   extendContent?: boolean;
-  options?: GridOptions;
 }
 
 export type GridOptions = {
-  blockPadding?: boolean;
+  blockPadding?: boolean | string;
+  gap?: boolean;
   columns?: number;
   maxWidth?: number;
   breakPoints?: {
@@ -45,8 +47,10 @@ export type GridOptions = {
 
 export type GridData = {
   options?: GridOptions;
-  grid: BlockSetData[];
+  grid: BlockSetData;
 };
+
+export type FlexGridProps = ComponentProps & Partial<GridData>;
 
 export type BlockSetProps = ComponentProps &
   Omit<BlockSetData, 'blocks'> & { options?: GridOptions };
