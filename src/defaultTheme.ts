@@ -6,8 +6,4 @@ export const theme: DefaultTheme = {
   breakPoints: { small: 767, large: 992 },
   columns: 4,
   maxWidth: 960,
-  domMapping: {
-    wrapper: 'div',
-    block: 'div',
-  },
 };

@@ -1,4 +1,11 @@
-import { DOMElement, ElementType, PropsWithChildren } from 'react';
+import React, {
+  ComponentPropsWithoutRef,
+  DOMElement,
+  ElementType,
+  HTMLAttributes,
+  PropsWithChildren,
+  ReactHTML,
+} from 'react';
 
 import { CSSProperties, DefaultTheme } from 'styled-components';
 
@@ -26,11 +33,13 @@ export interface BlockData extends BackgroundProps {
   blockPadding?: false | string;
   Content: ElementType;
   size?: number;
+  as?: keyof AllowedTags;
 }
 
-type AllowedTags = keyof Pick<
+type AllowedTags = Pick<
   HTMLElementTagNameMap,
   | 'address'
+  | 'a'
   | 'article'
   | 'aside'
   | 'br'
@@ -62,6 +71,8 @@ type AllowedTags = keyof Pick<
   | 'summary'
 >;
 
+export type AllowedProps<T extends keyof AllowedTags> = React.ComponentPropsWithoutRef<T>;
+
 export type GridOptions = {
   blockPadding?: false | string;
   gap?: false | string;
@@ -71,15 +82,12 @@ export type GridOptions = {
     small: number;
     large: number;
   };
-  domMapping?: {
-    wrapper: AllowedTags;
-    block: AllowedTags;
-  };
 };
 
 export type GridData = BackgroundProps &
   GridOptions & {
     blocks: BlockData[];
+    as?: keyof AllowedTags;
     // extendBackground?: boolean;
     // extendContent?: boolean;
   };
@@ -89,3 +97,10 @@ export type FlexGridProps = ComponentProps & Partial<GridData>;
 export type BlockSetProps = ComponentProps;
 
 export type BlockProps = ComponentProps & Omit<BlockData, 'Content'>;
+
+/**
+ * Based on https://github.com/kripod/react-polymorphic-box
+ */
+export type PolymorphicComponent<P> = <E extends React.ElementType = 'div'>(
+  props: P & { as?: E } & Omit<React.ComponentProps<E>, 'as'>
+) => React.ReactElement;

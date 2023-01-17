@@ -1,26 +1,41 @@
-import React, { ElementType } from 'react';
+import React, { ComponentProps, ElementType, PropsWithChildren } from 'react';
 
 import styled, { css, useTheme } from 'styled-components';
 
 import { Background } from '@src/Background';
-import { BlockProps } from '@src/types';
+import { BlockProps, PolymorphicComponent } from '@src/types';
 
 const BlockContent = styled.div`
   position: relative;
   z-index: 1;
 `;
 
-const BlockElement: ElementType<BlockProps> = props => {
-  const theme = useTheme();
-  return React.createElement(theme.domMapping.block, props, [props.children]);
-};
+// type BlockProps = {
+//   foo?: string
+// }
+
+// export const Block = <E extends React.ElementType = 'div'>(
+//   { as, ...props}: BlockProps & Omit<React.ComponentProps<E>, 'as'> & { as?: E }
+// ) => {
+//     const Element = as || 'div';
+//     return <Element {...props} />
+// }
+
+// const Teste2 = () => {
+//   return <Block as="div" href="#" color="blue" />
+// }
+
+// const BlockElement: ElementType<BlockProps> = props => {
+//   const theme = useTheme();
+//   return React.createElement(theme.domMapping.block, props, [props.children]);
+// };
 
 type StyledBlockProps = {
   $size: BlockProps['size'];
   $blockPadding: BlockProps['blockPadding'];
 };
 
-export const StyledBlock = styled(BlockElement)<StyledBlockProps>`
+export const StyledBlock = styled.div<StyledBlockProps>`
   position: relative;
   grid-column: span ${({ $size }) => $size};
 
@@ -42,23 +57,20 @@ export const StyledBlock = styled(BlockElement)<StyledBlockProps>`
   }
 `;
 
-export const Block: ElementType<BlockProps> = ({
+export const Block: PolymorphicComponent<BlockProps> = ({
   BackgroundComponent,
   backgroundImage,
   blockPadding,
   children,
-  className,
   size = 1,
-  style,
-}) => (
-  <StyledBlock
-    $blockPadding={blockPadding}
-    $size={size}
-    className={className}
-    style={style}
-    data-id="block"
-  >
+  ...props
+}: BlockProps) => (
+  <StyledBlock $blockPadding={blockPadding} $size={size} data-id="block" {...props}>
     <Background CustomComponent={BackgroundComponent} image={backgroundImage} />
     <BlockContent data-testid="block-content">{children}</BlockContent>
   </StyledBlock>
 );
+
+// const TestComp = () => {
+//    <Block as="div" href='€' >Hello</Block>
+// }

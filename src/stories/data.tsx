@@ -8,12 +8,10 @@ export const data: FlexGridProps = {
   columns: 4,
   maxWidth: 960,
   breakPoints: { small: 767, large: 992 },
-  domMapping: {
-    wrapper: 'article',
-    block: 'div',
-  },
+  as: 'article',
   blocks: [
     {
+      as: 'figure',
       size: 1,
       Content: (): React.ReactElement => (
         <div>

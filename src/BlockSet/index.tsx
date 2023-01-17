@@ -3,7 +3,7 @@ import React, { Children, ElementType, PropsWithChildren } from 'react';
 import styled, { css, useTheme } from 'styled-components';
 
 import { Background } from '@src/Background';
-import { BlockSetProps } from '@src/types';
+import { BlockSetProps, PolymorphicComponent } from '@src/types';
 
 // type BlockSetStyledProps = {
 //   $extendBackground: FlexGridProps['extendBackground'];
@@ -24,12 +24,12 @@ import { BlockSetProps } from '@src/types';
 //     `}
 // `;
 
-const BlockSetElement: ElementType<BlockSetProps> = props => {
-  const theme = useTheme();
-  return React.createElement(theme.domMapping.wrapper, props, [props.children]);
-};
+// const BlockSetElement: ElementType<BlockSetProps> = props => {
+//   const theme = useTheme();
+//   return React.createElement(theme.domMapping.wrapper, props, [props.children]);
+// };
 
-const BlockSetStyled = styled(BlockSetElement)`
+const BlockSetStyled = styled.div`
   display: grid;
   gap: ${({ theme }) => theme.gap && `${theme.gap}`};
   grid-template-columns: repeat(${({ theme }) => theme.columns}, 1fr);
@@ -41,20 +41,18 @@ const BlockSetStyled = styled(BlockSetElement)`
   margin: 0 auto;
 `;
 
-export const BlockSet: ElementType<BlockSetProps> = ({
+export const BlockSet: PolymorphicComponent<BlockSetProps> = ({
   // BackgroundComponent,
   // backgroundImage,
   children,
-  className,
   // extendBackground,
   // extendContent,
-  style,
-}) => (
+  ...props
+}: BlockSetProps) => (
   <BlockSetStyled
     data-id="blockset"
     // $extendBackground={extendBackground || extendContent}
-    className={className}
-    style={style}
+    {...props}
   >
     {/* <Background CustomComponent={BackgroundComponent} image={backgroundImage} /> */}
     {children}

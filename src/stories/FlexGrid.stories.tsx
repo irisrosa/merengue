@@ -50,7 +50,9 @@ Data.args = data;
 
 export const Components: ComponentStory<typeof FlexGrid> = (args: FlexGridProps) => (
   <FlexGrid {...args}>
-    <Block>Hello</Block>
+    <Block as="a" href="#">
+      Hello
+    </Block>
     <Block size={2} noPadding>
       Hello
     </Block>
@@ -59,6 +61,7 @@ export const Components: ComponentStory<typeof FlexGrid> = (args: FlexGridProps)
 );
 Components.args = {
   columns: 6,
+  as: 'section',
 };
 
 export const Nested: ComponentStory<typeof FlexGrid> = (args: FlexGridProps) => (
