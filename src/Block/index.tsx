@@ -1,4 +1,4 @@
-import React, { ComponentProps, ElementType, PropsWithChildren } from 'react';
+import React, { ComponentProps, ElementType, PropsWithChildren, useRef } from 'react';
 
 import styled, { css, useTheme } from 'styled-components';
 
@@ -57,20 +57,30 @@ export const StyledBlock = styled.div<StyledBlockProps>`
   }
 `;
 
-export const Block: PolymorphicComponent<BlockProps> = ({
-  BackgroundComponent,
-  backgroundImage,
-  blockPadding,
-  children,
-  size = 1,
-  ...props
-}: BlockProps) => (
-  <StyledBlock $blockPadding={blockPadding} $size={size} data-id="block" {...props}>
-    <Background CustomComponent={BackgroundComponent} image={backgroundImage} />
-    <BlockContent data-testid="block-content">{children}</BlockContent>
-  </StyledBlock>
+export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
+  (
+    {
+      BackgroundComponent,
+      backgroundImage,
+      blockPadding,
+      children,
+      size = 1,
+      ...props
+    }: BlockProps,
+    ref: React.Ref<HTMLElement>
+  ) => (
+    <StyledBlock $blockPadding={blockPadding} $size={size} data-id="block" ref={ref} {...props}>
+      <Background CustomComponent={BackgroundComponent} image={backgroundImage} />
+      <BlockContent data-testid="block-content">{children}</BlockContent>
+    </StyledBlock>
+  )
 );
 
-// const TestComp = () => {
-//    <Block as="div" href='€' >Hello</Block>
-// }
+const TestComp = () => {
+  const ref = useRef();
+  return (
+    <Block as="a" href="€" ref={ref}>
+      Hello
+    </Block>
+  );
+};
