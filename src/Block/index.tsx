@@ -1,6 +1,6 @@
-import React, { ComponentProps, ElementType, PropsWithChildren, useRef } from 'react';
+import React from 'react';
 
-import styled, { css, useTheme } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Background } from '@src/Background';
 import { BlockProps, PolymorphicComponent } from '@src/types';
@@ -9,26 +9,6 @@ const BlockContent = styled.div`
   position: relative;
   z-index: 1;
 `;
-
-// type BlockProps = {
-//   foo?: string
-// }
-
-// export const Block = <E extends React.ElementType = 'div'>(
-//   { as, ...props}: BlockProps & Omit<React.ComponentProps<E>, 'as'> & { as?: E }
-// ) => {
-//     const Element = as || 'div';
-//     return <Element {...props} />
-// }
-
-// const Teste2 = () => {
-//   return <Block as="div" href="#" color="blue" />
-// }
-
-// const BlockElement: ElementType<BlockProps> = props => {
-//   const theme = useTheme();
-//   return React.createElement(theme.domMapping.block, props, [props.children]);
-// };
 
 type StyledBlockProps = {
   $size: BlockProps['size'];
@@ -73,12 +53,3 @@ export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
     </StyledBlock>
   )
 );
-
-const TestComp = () => {
-  const ref = useRef();
-  return (
-    <Block as="a" href="€" ref={ref}>
-      Hello
-    </Block>
-  );
-};
