@@ -44,11 +44,9 @@ export const StyledBlock = styled.div<StyledBlockProps>`
   ${({ theme, $blockPadding }) =>
     ($blockPadding || theme.blockPadding) &&
     css`
-      ${BlockContent} {
-        padding: ${({ theme }) => `${$blockPadding || theme.blockPadding}`};
-        @media (min-width: ${theme.breakPoints.small}px) {
-          padding: 1rem;
-        }
+      padding: ${({ theme }) => `${$blockPadding || theme.blockPadding}`};
+      @media (max-width: ${theme.breakPoints.small}px) {
+        padding: 1rem;
       }
     `}
 
@@ -71,7 +69,7 @@ export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
   ) => (
     <StyledBlock $blockPadding={blockPadding} $size={size} data-id="block" ref={ref} {...props}>
       <Background CustomComponent={BackgroundComponent} image={backgroundImage} />
-      <BlockContent data-testid="block-content">{children}</BlockContent>
+      {backgroundImage || BackgroundComponent ? <BlockContent>{children}</BlockContent> : children}
     </StyledBlock>
   )
 );
