@@ -41,7 +41,7 @@ const BlockSetStyled = styled.div`
 `;
 
 export const BlockSet: PolymorphicComponent<BlockSetProps> = React.forwardRef(
-  ({ children, ...props }: BlockSetProps, ref: React.Ref<HTMLElement>) => (
+  <RefType,>({ children, ...props }: BlockSetProps, ref: RefType) => (
     <BlockSetStyled ref={ref} {...props}>
       {children}
     </BlockSetStyled>

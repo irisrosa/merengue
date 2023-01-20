@@ -1,6 +1,12 @@
-import React, { ComponentPropsWithRef, ElementType } from 'react';
+import React, { ComponentPropsWithRef, ElementType, PropsWithChildren } from 'react';
 
-export type ComponentProps = ComponentPropsWithRef<ElementType>;
+// export type ComponentProps =;
+import { CSSProperties } from 'styled-components';
+
+export type ComponentProps = PropsWithChildren<{
+  className?: string;
+  style?: CSSProperties;
+}>;
 
 export type ImageType = {
   [key: string]: unknown;
@@ -82,7 +88,7 @@ export type GridData = BackgroundProps &
 
 export type FlexGridProps = ComponentProps & Partial<GridData>;
 
-export type BlockSetProps = ComponentProps;
+export type BlockSetProps = ComponentPropsWithRef<ElementType>;
 
 export type BlockProps = ComponentProps & Omit<BlockData, 'Content'>;
 
