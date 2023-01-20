@@ -1,8 +1,7 @@
-import React, { Children, ElementType, PropsWithChildren } from 'react';
+import React from 'react';
 
-import styled, { css, useTheme } from 'styled-components';
+import styled from 'styled-components';
 
-import { Background } from '@src/Background';
 import { BlockSetProps, PolymorphicComponent } from '@src/types';
 
 // type BlockSetStyledProps = {
@@ -41,20 +40,10 @@ const BlockSetStyled = styled.div`
   margin: 0 auto;
 `;
 
-export const BlockSet: PolymorphicComponent<BlockSetProps> = ({
-  // BackgroundComponent,
-  // backgroundImage,
-  children,
-  // extendBackground,
-  // extendContent,
-  ...props
-}: BlockSetProps) => (
-  <BlockSetStyled
-    data-id="blockset"
-    // $extendBackground={extendBackground || extendContent}
-    {...props}
-  >
-    {/* <Background CustomComponent={BackgroundComponent} image={backgroundImage} /> */}
-    {children}
-  </BlockSetStyled>
+export const BlockSet: PolymorphicComponent<BlockSetProps> = React.forwardRef(
+  ({ children, ...props }: BlockSetProps, ref: React.Ref<HTMLElement>) => (
+    <BlockSetStyled ref={ref} {...props}>
+      {children}
+    </BlockSetStyled>
+  )
 );

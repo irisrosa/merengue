@@ -1,18 +1,6 @@
-import React, {
-  ComponentPropsWithoutRef,
-  DOMElement,
-  ElementType,
-  HTMLAttributes,
-  PropsWithChildren,
-  ReactHTML,
-} from 'react';
+import React, { ComponentPropsWithRef, ElementType } from 'react';
 
-import { CSSProperties, DefaultTheme } from 'styled-components';
-
-export type ComponentProps = PropsWithChildren<{
-  className?: string;
-  style?: CSSProperties;
-}>;
+export type ComponentProps = ComponentPropsWithRef<ElementType>;
 
 export type ImageType = {
   [key: string]: unknown;
@@ -36,7 +24,7 @@ export interface BlockData extends BackgroundProps {
   as?: keyof AllowedTags;
 }
 
-type AllowedTags = Pick<
+export type AllowedTags = Pick<
   HTMLElementTagNameMap,
   | 'address'
   | 'a'
@@ -102,5 +90,5 @@ export type BlockProps = ComponentProps & Omit<BlockData, 'Content'>;
  * Based on https://github.com/kripod/react-polymorphic-box
  */
 export type PolymorphicComponent<P> = <E extends React.ElementType = 'div'>(
-  props: P & { as?: E } & Omit<React.ComponentProps<E>, 'as'>
+  props: P & { as?: E } & Omit<React.ComponentPropsWithRef<E>, 'as'>
 ) => React.ReactElement;

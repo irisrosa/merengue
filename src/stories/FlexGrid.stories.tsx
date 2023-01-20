@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
@@ -48,17 +48,21 @@ export const Data: ComponentStory<typeof FlexGrid> = (args: FlexGridProps) => (
 );
 Data.args = data;
 
-export const Components: ComponentStory<typeof FlexGrid> = (args: FlexGridProps) => (
-  <FlexGrid {...args}>
-    <Block as="a" href="#">
-      Hello
-    </Block>
-    <Block size={2} noPadding>
-      Hello
-    </Block>
-    <Block>Hello</Block>
-  </FlexGrid>
-);
+export const Components: ComponentStory<typeof FlexGrid> = (args: FlexGridProps) => {
+  const ref = useRef();
+  const ref2 = useRef();
+  return (
+    <FlexGrid {...args} ref={ref}>
+      <Block as="div" onClick={() => console.log(ref2.current)} ref={ref2}>
+        Hello
+      </Block>
+      <Block size={2} noPadding>
+        Hello
+      </Block>
+      <Block>Hello</Block>
+    </FlexGrid>
+  );
+};
 Components.args = {
   columns: 6,
   as: 'section',
