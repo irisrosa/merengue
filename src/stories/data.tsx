@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { FlexGridProps } from '../types';
+import CustomBackgroundComponent from './CustomBackgroundComponent';
 
 export const data: FlexGridProps = {
   blockPadding: '',
@@ -9,11 +10,12 @@ export const data: FlexGridProps = {
   maxWidth: 960,
   breakPoints: { small: 767, large: 992 },
   as: 'article',
+  renderCustomBackground: CustomBackgroundComponent,
   blocks: [
     {
       as: 'figure',
       size: 1,
-      Content: (): React.ReactElement => (
+      Content: () => (
         <div>
           {' '}
           1 Lorem velit aliquip enim velit adipisicing magna. Elit tempor occaecat quis amet nulla.
@@ -23,12 +25,12 @@ export const data: FlexGridProps = {
           excepteur ea.
         </div>
       ),
-      BackgroundComponent: undefined,
+      renderCustomBackground: undefined,
       backgroundImage: undefined,
     },
     {
       size: 2,
-      Content: (): React.ReactElement => (
+      Content: () => (
         <div>
           {' '}
           2 Lorem velit aliquip enim velit adipisicing magna. Elit tempor occaecat quis amet nulla.
@@ -38,12 +40,12 @@ export const data: FlexGridProps = {
           excepteur ea.
         </div>
       ),
-      BackgroundComponent: undefined,
+      renderCustomBackground: undefined,
       backgroundImage: undefined,
     },
     {
       size: 1,
-      Content: (): React.ReactElement => (
+      Content: () => (
         <div>
           3 Lorem velit aliquip enim velit adipisicing magna. Elit tempor occaecat quis amet nulla.
           Magna proident cillum sunt irure id anim aliquip quis aliquip minim occaecat. Ullamco
@@ -52,12 +54,12 @@ export const data: FlexGridProps = {
           excepteur ea.
         </div>
       ),
-      BackgroundComponent: undefined,
+      renderCustomBackground: undefined,
       backgroundImage: undefined,
     },
     {
       size: 1,
-      Content: (): React.ReactElement => (
+      Content: () => (
         <div>
           4 Lorem velit aliquip enim velit adipisicing magna. Elit tempor occaecat quis amet nulla.
           Magna proident cillum sunt irure id anim aliquip quis aliquip minim occaecat. Ullamco
@@ -66,12 +68,12 @@ export const data: FlexGridProps = {
           excepteur ea.
         </div>
       ),
-      BackgroundComponent: undefined,
+      renderCustomBackground: undefined,
       backgroundImage: undefined,
     },
     {
       size: 1,
-      Content: (): React.ReactElement => (
+      Content: () => (
         <div>
           5 Lorem velit aliquip enim velit adipisicing magna. Elit tempor occaecat quis amet nulla.
           Magna proident cillum sunt irure id anim aliquip quis aliquip minim occaecat. Ullamco
@@ -80,7 +82,7 @@ export const data: FlexGridProps = {
           excepteur ea.
         </div>
       ),
-      BackgroundComponent: undefined,
+      renderCustomBackground: undefined,
       backgroundImage: undefined,
     },
   ],

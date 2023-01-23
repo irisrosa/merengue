@@ -61,5 +61,5 @@ export const BackgroundComponent: ComponentStory<typeof Block> = args => (
   <Block {...args}>{text}</Block>
 );
 BackgroundComponent.args = {
-  BackgroundComponent: CustomBackgroundComponent,
+  renderCustomBackground: CustomBackgroundComponent,
 };

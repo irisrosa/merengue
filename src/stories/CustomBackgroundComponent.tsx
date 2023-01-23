@@ -1,8 +1,6 @@
 import React from 'react';
 
-type Props = {};
-
-const CustomBackgroundComponent = (props: Props) => (
+const CustomBackgroundComponent = () => (
   <div
     style={{
       position: 'absolute',

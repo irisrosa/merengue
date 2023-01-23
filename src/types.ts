@@ -1,4 +1,4 @@
-import React, { ElementType, ForwardedRef, PropsWithChildren } from 'react';
+import React, { ElementType, ForwardedRef, PropsWithChildren, ReactElement } from 'react';
 
 import { CSSProperties } from 'styled-components';
 
@@ -17,10 +17,10 @@ export type ImageType = {
   srcSet?: string;
 };
 
-interface BackgroundProps {
-  BackgroundComponent?: ElementType;
+export type BackgroundProps = {
+  renderCustomBackground?: () => ReactElement;
   backgroundImage?: ImageType;
-}
+};
 
 export interface BlockData extends BackgroundProps {
   blockPadding?: false | string;
@@ -87,7 +87,7 @@ export type GridData = BackgroundProps &
 
 export type FlexGridProps = ComponentProps & Partial<GridData>;
 
-export type BlockSetProps = ComponentProps & Pick<GridData, 'extendContent' | 'as'>;
+export type BlockSetProps = ComponentProps & Omit<GridData, keyof GridOptions | 'blocks'>;
 
 export type BlockProps = ComponentProps & Omit<BlockData, 'Content'>;
 

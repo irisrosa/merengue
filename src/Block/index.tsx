@@ -10,11 +10,6 @@ const BlockContent = styled.div`
   z-index: 1;
 `;
 
-// type StyledBlockProps = {
-//   $size: BlockProps['size'];
-//   $blockPadding: BlockProps['blockPadding'];
-// };
-
 export const StyledBlock = styled.div<BlockProps>`
   position: relative;
   grid-column: span ${({ size }) => size || 1};
@@ -37,12 +32,24 @@ export const StyledBlock = styled.div<BlockProps>`
 
 export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
   (
-    { BackgroundComponent, backgroundImage, children, ...props }: BlockProps,
+    { renderCustomBackground, backgroundImage, children, ...props }: BlockProps,
     ref: ForwardedRef<any>
-  ) => (
-    <StyledBlock ref={ref} {...props}>
-      <Background CustomComponent={BackgroundComponent} image={backgroundImage} />
-      {backgroundImage || BackgroundComponent ? <BlockContent>{children}</BlockContent> : children}
-    </StyledBlock>
-  )
+  ) => {
+    const hasBackground = Boolean(backgroundImage) || Boolean(renderCustomBackground);
+    return (
+      <StyledBlock ref={ref} {...props}>
+        {hasBackground ? (
+          <>
+            <Background
+              renderCustomBackground={renderCustomBackground}
+              backgroundImage={backgroundImage}
+            />
+            <BlockContent>{children}</BlockContent>
+          </>
+        ) : (
+          children
+        )}
+      </StyledBlock>
+    );
+  }
 );

@@ -68,6 +68,10 @@ Components.args = {
   as: 'section',
   breakPoints: { small: 767, large: 992 },
   extendContent: false,
+  backgroundImage: {
+    alt: 'something',
+    src: 'https://images.unsplash.com/photo-1558244661-d248897f7bc4?crop=entropy&fm=jpg&h=500&q=80&w=1600&cs=tinysrgb&fit=crop',
+  },
   // extendBackground: false,
 };
 

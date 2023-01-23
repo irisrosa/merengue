@@ -2,6 +2,7 @@ import React, { ForwardedRef } from 'react';
 
 import styled from 'styled-components';
 
+import { Background } from '@src/Background';
 import { BlockSetProps, PolymorphicComponent } from '@src/types';
 
 // type BlockSetStyledProps = {
@@ -23,12 +24,8 @@ import { BlockSetProps, PolymorphicComponent } from '@src/types';
 //     `}
 // `;
 
-// const BlockSetElement: ElementType<BlockSetProps> = props => {
-//   const theme = useTheme();
-//   return React.createElement(theme.domMapping.wrapper, props, [props.children]);
-// };
-
 const BlockSetStyled = styled.div<BlockSetProps>`
+  position: relative;
   display: grid;
   gap: ${({ theme }) => theme.gap && `${theme.gap}`};
   grid-template-columns: repeat(${({ theme }) => theme.columns}, 1fr);
@@ -42,9 +39,23 @@ const BlockSetStyled = styled.div<BlockSetProps>`
 `;
 
 export const BlockSet: PolymorphicComponent<BlockSetProps> = React.forwardRef(
-  ({ children, ...props }: BlockSetProps, ref: ForwardedRef<any>) => (
-    <BlockSetStyled ref={ref} {...props}>
-      {children}
-    </BlockSetStyled>
-  )
+  (
+    { children, renderCustomBackground, backgroundImage, ...props }: BlockSetProps,
+    ref: ForwardedRef<any>
+  ) => {
+    const hasBackground = Boolean(backgroundImage) || Boolean(renderCustomBackground);
+
+    return (
+      <BlockSetStyled ref={ref} {...props}>
+        {hasBackground && (
+          <Background
+            renderCustomBackground={renderCustomBackground}
+            backgroundImage={backgroundImage}
+          />
+        )}
+
+        {children}
+      </BlockSetStyled>
+    );
+  }
 );
