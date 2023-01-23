@@ -1,4 +1,9 @@
-import React, { ComponentPropsWithRef, ElementType, PropsWithChildren } from 'react';
+import React, {
+  ComponentPropsWithRef,
+  ElementType,
+  MutableRefObject,
+  PropsWithChildren,
+} from 'react';
 
 // export type ComponentProps =;
 import { CSSProperties } from 'styled-components';
@@ -92,9 +97,11 @@ export type BlockSetProps = ComponentPropsWithRef<ElementType>;
 
 export type BlockProps = ComponentProps & Omit<BlockData, 'Content'>;
 
+type MyRef = { ref?: MutableRefObject<InstanceType<any>> };
+
 /**
  * Based on https://github.com/kripod/react-polymorphic-box
  */
 export type PolymorphicComponent<P> = <E extends React.ElementType = 'div'>(
-  props: P & { as?: E } & Omit<React.ComponentPropsWithRef<E>, 'as'>
+  props: P & { as?: E } & Omit<React.ComponentPropsWithoutRef<E>, 'as'> & MyRef
 ) => React.ReactElement;

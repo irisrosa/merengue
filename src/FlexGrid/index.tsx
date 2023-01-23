@@ -27,15 +27,16 @@ export const FlexGrid: PolymorphicComponent<FlexGridProps> = React.forwardRef(
   }
 );
 
-const Test = () => {
-  return (
-    <FlexGrid as="article" href="#">
-      <Block as="span" href="#">
-        hello
-      </Block>
-      <Block as="a" href="#">
-        hello
-      </Block>
-    </FlexGrid>
-  );
-};
+// const Test = () => {
+//   const ref = useRef();
+//   return (
+//     <FlexGrid as="a" ref={ref} href="#">
+//       <Block as="span" href="#">
+//         hello
+//       </Block>
+//       <Block as="a" href="#">
+//         hello
+//       </Block>
+//     </FlexGrid>
+//   );
+// };
