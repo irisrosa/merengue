@@ -1,11 +1,5 @@
-import React, {
-  ComponentPropsWithRef,
-  ElementType,
-  MutableRefObject,
-  PropsWithChildren,
-} from 'react';
+import React, { ElementType, ForwardedRef, PropsWithChildren } from 'react';
 
-// export type ComponentProps =;
 import { CSSProperties } from 'styled-components';
 
 export type ComponentProps = PropsWithChildren<{
@@ -93,15 +87,15 @@ export type GridData = BackgroundProps &
 
 export type FlexGridProps = ComponentProps & Partial<GridData>;
 
-export type BlockSetProps = ComponentPropsWithRef<ElementType> & Pick<GridData, 'extendContent'>;
+export type BlockSetProps = ComponentProps & Pick<GridData, 'extendContent' | 'as'>;
 
 export type BlockProps = ComponentProps & Omit<BlockData, 'Content'>;
-
-type MyRef = { ref?: MutableRefObject<InstanceType<any>> };
 
 /**
  * Based on https://github.com/kripod/react-polymorphic-box
  */
 export type PolymorphicComponent<P> = <E extends React.ElementType = 'div'>(
-  props: P & { as?: E } & Omit<React.ComponentPropsWithoutRef<E>, 'as'> & MyRef
+  props: P & { as?: E } & Omit<React.ComponentPropsWithoutRef<E>, 'as'> & {
+      ref?: ForwardedRef<any>;
+    }
 ) => React.ReactElement;

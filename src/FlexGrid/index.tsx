@@ -1,17 +1,16 @@
-import React, { ElementType, useRef } from 'react';
+import React, { ForwardedRef } from 'react';
 
 import { pick, omit } from 'rambda';
 import { ThemeProvider } from 'styled-components';
 
 import { Blocks } from '@src/Blocks';
 
-import { Block } from '..';
 import { BlockSet } from '../BlockSet';
 import { theme } from '../defaultTheme';
 import { FlexGridProps, PolymorphicComponent } from '../types';
 
 export const FlexGrid: PolymorphicComponent<FlexGridProps> = React.forwardRef(
-  <RefType,>({ blocks, children, ...props }: FlexGridProps, ref: RefType) => {
+  ({ blocks, children, ...props }: FlexGridProps, ref: ForwardedRef<any>) => {
     const themeOptionsKeys = ['blockPadding', 'gap', 'columns', 'maxWidth', 'breakPoints'];
     const themeOptions = pick(themeOptionsKeys, props);
     const blockSetAttributes = { ...omit(themeOptionsKeys, props), ref };
@@ -26,17 +25,3 @@ export const FlexGrid: PolymorphicComponent<FlexGridProps> = React.forwardRef(
     );
   }
 );
-
-// const Test = () => {
-//   const ref = useRef();
-//   return (
-//     <FlexGrid as="a" ref={ref} href="#">
-//       <Block as="span" href="#">
-//         hello
-//       </Block>
-//       <Block as="a" href="#">
-//         hello
-//       </Block>
-//     </FlexGrid>
-//   );
-// };

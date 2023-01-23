@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ForwardedRef } from 'react';
 
 import styled, { css } from 'styled-components';
 
@@ -10,21 +10,21 @@ const BlockContent = styled.div`
   z-index: 1;
 `;
 
-type StyledBlockProps = {
-  $size: BlockProps['size'];
-  $blockPadding: BlockProps['blockPadding'];
-};
+// type StyledBlockProps = {
+//   $size: BlockProps['size'];
+//   $blockPadding: BlockProps['blockPadding'];
+// };
 
-export const StyledBlock = styled.div<StyledBlockProps>`
+export const StyledBlock = styled.div<BlockProps>`
   position: relative;
-  grid-column: span ${({ $size }) => $size};
+  grid-column: span ${({ size }) => size || 1};
 
   display: grid;
 
-  ${({ theme, $blockPadding }) =>
-    ($blockPadding || theme.blockPadding) &&
+  ${({ theme, blockPadding }) =>
+    (blockPadding || theme.blockPadding) &&
     css`
-      padding: ${({ theme }) => `${$blockPadding || theme.blockPadding}`};
+      padding: ${({ theme }) => `${blockPadding || theme.blockPadding}`};
       @media (max-width: ${theme.breakPoints.small}px) {
         padding: 1rem;
       }
@@ -37,17 +37,10 @@ export const StyledBlock = styled.div<StyledBlockProps>`
 
 export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
   (
-    {
-      BackgroundComponent,
-      backgroundImage,
-      blockPadding,
-      children,
-      size = 1,
-      ...props
-    }: BlockProps,
-    ref: React.Ref<HTMLElement>
+    { BackgroundComponent, backgroundImage, children, ...props }: BlockProps,
+    ref: ForwardedRef<any>
   ) => (
-    <StyledBlock $blockPadding={blockPadding} $size={size} data-id="block" ref={ref} {...props}>
+    <StyledBlock ref={ref} {...props}>
       <Background CustomComponent={BackgroundComponent} image={backgroundImage} />
       {backgroundImage || BackgroundComponent ? <BlockContent>{children}</BlockContent> : children}
     </StyledBlock>

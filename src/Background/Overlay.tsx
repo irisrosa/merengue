@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-import { ComponentProps } from '@src/types';
-
-export const Overlay = styled.div<ComponentProps>`
+export const Overlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
