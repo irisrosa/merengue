@@ -56,9 +56,16 @@ export const Components: ComponentStory<typeof FlexGrid> = (args: FlexGridProps)
       <Block as="div" onClick={() => console.log(ref2.current)} ref={ref2}>
         Hello
       </Block>
-      <Block size={2} noPadding>
-        Hello
-      </Block>
+      <Block size={2}>Hello</Block>
+      <Block>Hello</Block>
+      <Block>Hello</Block>
+      <Block>Hello</Block>
+      <Block>Hello</Block>
+      <Block>Hello</Block>
+      <Block>Hello</Block>
+      <Block>Hello</Block>
+      <Block>Hello</Block>
+      <Block>Hello</Block>
       <Block>Hello</Block>
     </FlexGrid>
   );
@@ -68,6 +75,8 @@ Components.args = {
   as: 'section',
   breakPoints: { small: 767, large: 992 },
   extendContent: false,
+  extendBackground: false,
+  gap: '1rem',
   backgroundImage: {
     alt: 'something',
     src: 'https://images.unsplash.com/photo-1558244661-d248897f7bc4?crop=entropy&fm=jpg&h=500&q=80&w=1600&cs=tinysrgb&fit=crop',

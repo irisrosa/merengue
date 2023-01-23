@@ -1,28 +1,12 @@
 import React, { ForwardedRef } from 'react';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Background } from '@src/Background';
 import { BlockSetProps, PolymorphicComponent } from '@src/types';
 
-// type BlockSetStyledProps = {
-//   $extendBackground: FlexGridProps['extendBackground'];
-// };
-
-// const BlockSetStyled = styled.div<BlockSetStyledProps>`
-//   position: relative;
-//   overflow: hidden;
-
-//   ${({ $extendBackground, theme }) =>
-//     !$extendBackground &&
-//     css`
-//       @media (min-width: ${theme.breakPoints.small}px) {
-//         max-width: ${theme.maxWidth}px;
-//       }
-//       width: 100%;
-//       margin: 0 auto;
-//     `}
-// `;
+const convertRemToPixels: (arg: string | false) => number = rem =>
+  rem ? parseFloat(rem) * parseFloat(getComputedStyle(document.documentElement).fontSize) : 1;
 
 const BlockSetStyled = styled.div<BlockSetProps>`
   position: relative;
@@ -31,7 +15,20 @@ const BlockSetStyled = styled.div<BlockSetProps>`
   grid-template-columns: repeat(${({ theme }) => theme.columns}, 1fr);
 
   @media (min-width: ${({ theme }) => theme.breakPoints.large}px) {
-    max-width: ${({ theme, extendContent }) => (extendContent ? '100%' : theme.maxWidth)}px;
+    max-width: ${({ theme, extendContent, extendBackground }) =>
+      extendContent || extendBackground ? '100%' : theme.maxWidth}px;
+
+    ${({ theme, extendBackground }) =>
+      extendBackground &&
+      css`
+        grid-template-columns: repeat(
+          ${theme.columns},
+          ${Math.floor(
+            (theme.maxWidth - (theme.columns - 1) * convertRemToPixels(theme.gap)) / theme.columns
+          )}px
+        );
+        justify-content: center;
+      `}
   }
 
   width: 100%;

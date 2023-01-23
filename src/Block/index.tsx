@@ -19,7 +19,7 @@ export const StyledBlock = styled.div<BlockProps>`
   ${({ theme, blockPadding }) =>
     (blockPadding || theme.blockPadding) &&
     css`
-      padding: ${({ theme }) => `${blockPadding || theme.blockPadding}`};
+      padding: ${`${blockPadding || theme.blockPadding}`};
       @media (max-width: ${theme.breakPoints.small}px) {
         padding: 1rem;
       }

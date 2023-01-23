@@ -11,6 +11,8 @@ export const data: FlexGridProps = {
   breakPoints: { small: 767, large: 992 },
   as: 'article',
   renderCustomBackground: CustomBackgroundComponent,
+  extendBackground: false,
+  extendContent: false,
   blocks: [
     {
       as: 'figure',

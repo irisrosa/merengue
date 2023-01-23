@@ -81,7 +81,7 @@ export type GridData = BackgroundProps &
   GridOptions & {
     blocks: BlockData[];
     as?: keyof AllowedTags;
-    // extendBackground?: boolean;
+    extendBackground?: boolean;
     extendContent?: boolean;
   };
 
