@@ -10,7 +10,10 @@ const BlockContent = styled.div`
   z-index: 1;
 `;
 
-export const StyledBlock = styled.div<BlockProps>`
+export const StyledBlock = styled.div.withConfig<BlockProps>({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    !['size'].includes(prop) && defaultValidatorFn(prop),
+})`
   position: relative;
   grid-column: span ${({ size }) => size || 1};
 
