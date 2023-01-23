@@ -66,6 +66,9 @@ export const Components: ComponentStory<typeof FlexGrid> = (args: FlexGridProps)
 Components.args = {
   columns: 6,
   as: 'section',
+  breakPoints: { small: 767, large: 992 },
+  extendContent: false,
+  // extendBackground: false,
 };
 
 export const Nested: ComponentStory<typeof FlexGrid> = (args: FlexGridProps) => (

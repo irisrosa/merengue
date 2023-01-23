@@ -28,14 +28,15 @@ import { BlockSetProps, PolymorphicComponent } from '@src/types';
 //   return React.createElement(theme.domMapping.wrapper, props, [props.children]);
 // };
 
-const BlockSetStyled = styled.div`
+const BlockSetStyled = styled.div<BlockSetProps>`
   display: grid;
   gap: ${({ theme }) => theme.gap && `${theme.gap}`};
   grid-template-columns: repeat(${({ theme }) => theme.columns}, 1fr);
 
   @media (min-width: ${({ theme }) => theme.breakPoints.large}px) {
-    max-width: ${({ theme }) => theme.maxWidth}px;
+    max-width: ${({ theme, extendContent }) => (extendContent ? '100%' : theme.maxWidth)}px;
   }
+
   width: 100%;
   margin: 0 auto;
 `;
