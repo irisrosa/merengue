@@ -1,6 +1,6 @@
 import React, { ForwardedRef } from 'react';
 
-import styled, { css } from 'styled-components';
+import styled, { css, useTheme } from 'styled-components';
 
 import { Background } from '@src/Background';
 import { BlockProps, PolymorphicComponent } from '@src/types';
@@ -15,7 +15,7 @@ export const StyledBlock = styled.div.withConfig<BlockProps>({
     !['size'].includes(prop) && defaultValidatorFn(prop),
 })`
   position: relative;
-  grid-column: span ${({ size }) => size || 1};
+  grid-column: span ${({ size = 1 }) => size};
 
   display: grid;
 
@@ -35,24 +35,30 @@ export const StyledBlock = styled.div.withConfig<BlockProps>({
 
 export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
   (
-    { renderCustomBackground, backgroundImage, children, ...props }: BlockProps,
+    { renderCustomBackground, backgroundImage, children, offset, ...props }: BlockProps,
     ref: ForwardedRef<any>
   ) => {
     const hasBackground = Boolean(backgroundImage) || Boolean(renderCustomBackground);
     return (
-      <StyledBlock ref={ref} {...props}>
-        {hasBackground ? (
-          <>
-            <Background
-              renderCustomBackground={renderCustomBackground}
-              backgroundImage={backgroundImage}
-            />
-            <BlockContent>{children}</BlockContent>
-          </>
-        ) : (
-          children
-        )}
-      </StyledBlock>
+      <>
+        {Boolean(offset) &&
+          Array(offset)
+            .fill(0)
+            .map(() => <StyledBlock />)}
+        <StyledBlock ref={ref} {...props}>
+          {hasBackground ? (
+            <>
+              <Background
+                renderCustomBackground={renderCustomBackground}
+                backgroundImage={backgroundImage}
+              />
+              <BlockContent>{children}</BlockContent>
+            </>
+          ) : (
+            children
+          )}
+        </StyledBlock>
+      </>
     );
   }
 );

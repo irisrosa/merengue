@@ -27,6 +27,7 @@ export interface BlockData extends BackgroundProps {
   Content: ElementType;
   size?: number;
   as?: keyof AllowedTags;
+  offset?: number;
 }
 
 export type AllowedTags = Pick<
@@ -68,6 +69,7 @@ export type AllowedProps<T extends keyof AllowedTags> = React.ComponentPropsWith
 
 export type GridOptions = {
   blockPadding?: false | string;
+  /** Preferably use rem unit to set the gap  */
   gap?: false | string;
   columns?: number;
   maxWidth?: number;

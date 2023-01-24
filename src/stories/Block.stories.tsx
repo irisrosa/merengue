@@ -38,6 +38,13 @@ export default {
         defaultValue: { summary: 'false' },
       },
     },
+    offset: {
+      type: 'number',
+      description: 'Number of columns to offset the current block.',
+      table: {
+        defaultValue: { summary: 0 },
+      },
+    },
   },
 } as ComponentMeta<typeof Block>;
 

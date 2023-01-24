@@ -56,7 +56,9 @@ export const Components: ComponentStory<typeof FlexGrid> = (args: FlexGridProps)
       <Block as="div" onClick={() => console.log(ref2.current)} ref={ref2}>
         Hello
       </Block>
-      <Block size={2}>Hello</Block>
+      <Block size={2} offset={1} style={{ backgroundColor: 'blue' }}>
+        Hello
+      </Block>
       <Block>Hello</Block>
       <Block>Hello</Block>
       <Block>Hello</Block>
