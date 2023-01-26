@@ -3,7 +3,12 @@ import React, { ForwardedRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import { Background } from '@src/Background';
-import { BlockSetProps, PolymorphicComponent } from '@src/types';
+import {
+  BlockSetProps,
+  PolymorphicComponent,
+  PolymorphicComponentPropWithRef,
+  PolymorphicRef,
+} from '@src/types';
 
 const convertRemToPixels: (arg: string | false) => number = rem =>
   rem ? parseFloat(rem) * parseFloat(getComputedStyle(document.documentElement).fontSize) : 1;
@@ -36,9 +41,14 @@ const BlockSetStyled = styled.div<BlockSetProps>`
 `;
 
 export const BlockSet: PolymorphicComponent<BlockSetProps> = React.forwardRef(
-  (
-    { children, renderCustomBackground, backgroundImage, ...props }: BlockSetProps,
-    ref: ForwardedRef<any>
+  <C extends React.ElementType = 'div'>(
+    {
+      children,
+      renderCustomBackground,
+      backgroundImage,
+      ...props
+    }: PolymorphicComponentPropWithRef<C, BlockSetProps>,
+    ref: PolymorphicRef<C>
   ) => {
     const hasBackground = Boolean(backgroundImage) || Boolean(renderCustomBackground);
 

@@ -7,10 +7,18 @@ import { Blocks } from '@src/Blocks';
 
 import { BlockSet } from '../BlockSet';
 import { theme } from '../defaultTheme';
-import { FlexGridProps, PolymorphicComponent } from '../types';
+import {
+  FlexGridProps,
+  PolymorphicComponent,
+  PolymorphicComponentPropWithRef,
+  PolymorphicRef,
+} from '../types';
 
 export const FlexGrid: PolymorphicComponent<FlexGridProps> = React.forwardRef(
-  ({ blocks, children, ...props }: FlexGridProps, ref: ForwardedRef<any>) => {
+  <C extends React.ElementType = 'div'>(
+    { blocks, children, ...props }: PolymorphicComponentPropWithRef<C, FlexGridProps>,
+    ref: PolymorphicRef<C>
+  ) => {
     const themeOptionsKeys = ['blockPadding', 'gap', 'columns', 'maxWidth', 'breakPoints'];
     const themeOptions = pick(themeOptionsKeys, props);
     const blockSetAttributes = { ...omit(themeOptionsKeys, props), ref };

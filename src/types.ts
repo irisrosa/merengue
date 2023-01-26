@@ -2,7 +2,7 @@ import React, { ElementType, ForwardedRef, PropsWithChildren, ReactElement } fro
 
 import { CSSProperties } from 'styled-components';
 
-export type ComponentProps = PropsWithChildren<{
+export type BasicComponentProps = PropsWithChildren<{
   className?: string;
   style?: CSSProperties;
 }>;
@@ -87,17 +87,20 @@ export type GridData = BackgroundProps &
     extendContent?: boolean;
   };
 
-export type FlexGridProps = ComponentProps & Partial<GridData>;
+export type FlexGridProps = Partial<GridData>;
 
-export type BlockSetProps = ComponentProps & Omit<GridData, keyof GridOptions | 'blocks'>;
+export type BlockSetProps = Omit<GridData, keyof GridOptions | 'blocks'>;
 
-export type BlockProps = ComponentProps & Omit<BlockData, 'Content'>;
+export type BlockProps = Partial<BlockData>;
 
-/**
- * Based on https://github.com/kripod/react-polymorphic-box
- */
+export type PolymorphicRef<C extends React.ElementType> = React.ComponentPropsWithRef<C>['ref'];
+
+export type PolymorphicComponentPropWithRef<C extends React.ElementType, Props = {}> =
+  React.PropsWithChildren<Props & { as?: C }> &
+    Omit<React.ComponentPropsWithoutRef<C>, 'as'> & {
+      ref?: PolymorphicRef<C>;
+    };
+
 export type PolymorphicComponent<P> = <E extends React.ElementType = 'div'>(
-  props: P & { as?: E } & Omit<React.ComponentPropsWithoutRef<E>, 'as'> & {
-      ref?: ForwardedRef<any>;
-    }
+  props: PolymorphicComponentPropWithRef<E, P>
 ) => React.ReactElement;

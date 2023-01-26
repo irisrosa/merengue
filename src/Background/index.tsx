@@ -2,11 +2,11 @@ import React, { ElementType } from 'react';
 
 import styled, { css } from 'styled-components';
 
-import { BackgroundProps, ComponentProps } from '@src/types';
+import { BackgroundProps, BasicComponentProps } from '@src/types';
 
 import { Overlay } from './Overlay';
 
-export interface BackgroundInterface extends ComponentProps {
+export interface BackgroundInterface extends BasicComponentProps {
   src?: string;
   alt?: string;
   overlay?: boolean;

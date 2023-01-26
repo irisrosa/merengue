@@ -3,7 +3,12 @@ import React, { ForwardedRef } from 'react';
 import styled, { css, useTheme } from 'styled-components';
 
 import { Background } from '@src/Background';
-import { BlockProps, PolymorphicComponent } from '@src/types';
+import {
+  BlockProps,
+  PolymorphicComponent,
+  PolymorphicComponentPropWithRef,
+  PolymorphicRef,
+} from '@src/types';
 
 const BlockContent = styled.div`
   position: relative;
@@ -34,9 +39,15 @@ export const StyledBlock = styled.div.withConfig<BlockProps>({
 `;
 
 export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
-  (
-    { renderCustomBackground, backgroundImage, children, offset, ...props }: BlockProps,
-    ref: ForwardedRef<any>
+  <C extends React.ElementType = 'div'>(
+    {
+      renderCustomBackground,
+      backgroundImage,
+      children,
+      offset,
+      ...props
+    }: PolymorphicComponentPropWithRef<C, BlockProps>,
+    ref: PolymorphicRef<C>
   ) => {
     const hasBackground = Boolean(backgroundImage) || Boolean(renderCustomBackground);
     return (
@@ -62,3 +73,11 @@ export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
     );
   }
 );
+
+// const Test = () => {
+//   return (
+//     <Block as="div" href="#">
+//       Test
+//     </Block>
+//   );
+// };
