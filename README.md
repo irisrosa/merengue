@@ -5,3 +5,4 @@
 - [ ] Rewrite tests
 - [ ] Write documentation
 - [ ] Make storybook examples look nicer
+- [ ] Make it ssr compatible
