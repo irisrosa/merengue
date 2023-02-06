@@ -13,13 +13,9 @@
     "@src/*": "./src/$1"
   },
   "scripts": {
-    "build": "yarn cleanup && swc ./src -d build && yarn types",
-    "build:parcel": "parcel build",
-    "cleanup": "rimraf build",
-    "types": "tsc --project tsconfig.json",
-    "test": "jest",
+    "build": "parcel build",
     "dev": "npx nodemon --watch src -e \".ts, .tsx\" --exec \"yarn run build && yalc push --changed --no-scripts\"",
-    "dev:parcel": "parcel watch",
+    "watch": "parcel watch",
     "build-storybook": "build-storybook",
     "storybook": "start-storybook -p 6006",
     "format": "prettier --write \"src/**/*.tsx\""
