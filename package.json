@@ -26,7 +26,6 @@
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^17.0.9",
-    "babel-loader": "^8.3.0",
     "classnames": "^2.3.2",
     "eslint": "^7.24.0",
     "parcel": "^2.8.3",

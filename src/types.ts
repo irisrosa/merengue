@@ -1,6 +1,15 @@
-import React, { ElementType, ForwardedRef, PropsWithChildren, ReactElement } from 'react';
+import React, { CSSProperties, ElementType, PropsWithChildren, ReactElement } from 'react';
 
-import { CSSProperties } from 'styled-components';
+export type Theme = {
+  blockPadding?: boolean;
+  gap?: string;
+  breakPoints?: {
+    small: number;
+    large: number;
+  };
+  columns?: number;
+  maxWidth?: number;
+};
 
 export type BasicComponentProps = PropsWithChildren<{
   className?: string;

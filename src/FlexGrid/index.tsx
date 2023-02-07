@@ -1,12 +1,9 @@
-import React, { ForwardedRef } from 'react';
+import React from 'react';
 
-import { pick, omit } from 'rambda';
-import { ThemeProvider } from 'styled-components';
-
+import { BlockSet } from '@src/BlockSet';
 import { Blocks } from '@src/Blocks';
+import { theme } from '@src/theme';
 
-import { BlockSet } from '../BlockSet';
-import { theme } from '../defaultTheme';
 import {
   FlexGridProps,
   PolymorphicComponent,
@@ -19,17 +16,15 @@ export const FlexGrid: PolymorphicComponent<FlexGridProps> = React.forwardRef(
     { blocks, children, ...props }: PolymorphicComponentPropWithRef<C, FlexGridProps>,
     ref: PolymorphicRef<C>
   ) => {
-    const themeOptionsKeys = ['blockPadding', 'gap', 'columns', 'maxWidth', 'breakPoints'];
-    const themeOptions = pick(themeOptionsKeys, props);
-    const blockSetAttributes = { ...omit(themeOptionsKeys, props), ref };
+    const { blockPadding, gap, columns, maxWidth, breakPoints, ...blockSetAttributes } = props;
+
+    theme.options = { blockPadding, gap, columns, maxWidth, breakPoints };
 
     return (
-      <ThemeProvider theme={{ ...theme, ...themeOptions }}>
-        <BlockSet {...blockSetAttributes} ref={ref}>
-          {Boolean(blocks) && <Blocks blocks={blocks} />}
-          {children}
-        </BlockSet>
-      </ThemeProvider>
+      <BlockSet {...blockSetAttributes} ref={ref}>
+        {Boolean(blocks) && <Blocks blocks={blocks} />}
+        {children}
+      </BlockSet>
     );
   }
 );

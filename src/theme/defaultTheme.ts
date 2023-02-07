@@ -1,6 +1,6 @@
-import { DefaultTheme } from 'styled-components';
+import { Theme } from '@src/types';
 
-export const theme: DefaultTheme = {
+export const theme: Theme = {
   blockPadding: false,
   gap: '1rem',
   breakPoints: { small: 767, large: 992 },
