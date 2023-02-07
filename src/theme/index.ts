@@ -19,7 +19,11 @@ class ThemeSingleton {
   }
 
   public set options(themeOptions: Theme) {
-    this._options = { ...this._options, ...themeOptions };
+    const filteredOptions = Object.fromEntries(
+      Object.entries(themeOptions).filter(([_, v]) => Boolean(v))
+    );
+
+    this._options = { ...this._options, ...filteredOptions };
   }
 }
 

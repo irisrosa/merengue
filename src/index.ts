@@ -1,3 +1,3 @@
-// export { FlexGrid } from './FlexGrid';
+export { FlexGrid } from './FlexGrid';
 // export type { GridData } from 'types';
-export { Block } from './Block';
+// export { Block } from './Block';
