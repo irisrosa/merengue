@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { BlockSet } from '@src/BlockSet';
 import { Blocks } from '@src/Blocks';
+import { BlockSet } from '@src/BlockSet';
 import { theme } from '@src/theme';
 
 import {

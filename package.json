@@ -31,6 +31,7 @@
     "eslint": "^7.24.0",
     "parcel": "^2.8.3",
     "parcel-transformer-ts-css-modules": "^1.0.14",
+    "prettier": "^2.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rimraf": "^3.0.2",
