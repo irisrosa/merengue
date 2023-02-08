@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CustomBackground = () => (
+export const CustomBackground = () => (
   <div
     style={{
       position: 'absolute',
@@ -16,5 +16,3 @@ const CustomBackground = () => (
     I'm the background component
   </div>
 );
-
-export default CustomBackground;

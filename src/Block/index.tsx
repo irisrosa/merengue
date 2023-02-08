@@ -1,13 +1,15 @@
-import React, { ForwardedRef } from 'react';
+import React from 'react';
 
-import styled, { css, useTheme } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Background } from '@src/Background';
+import { theme } from '@src/theme';
 import {
   BlockProps,
   PolymorphicComponent,
   PolymorphicComponentPropWithRef,
   PolymorphicRef,
+  PropsWithTheme,
 } from '@src/types';
 
 const BlockContent = styled.div`
@@ -15,7 +17,7 @@ const BlockContent = styled.div`
   z-index: 1;
 `;
 
-export const StyledBlock = styled.div.withConfig<BlockProps>({
+export const StyledBlock = styled.div.withConfig<PropsWithTheme<BlockProps>>({
   shouldForwardProp: (prop, defaultValidatorFn) =>
     !['size'].includes(prop) && defaultValidatorFn(prop),
 })`
@@ -56,7 +58,7 @@ export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
           Array(offset)
             .fill(0)
             .map(() => <StyledBlock />)}
-        <StyledBlock ref={ref} {...props}>
+        <StyledBlock ref={ref} {...props} theme={theme.options}>
           {hasBackground ? (
             <>
               <Background

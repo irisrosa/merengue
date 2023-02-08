@@ -1,10 +1,10 @@
-import { Theme } from '@src/types';
+import { DefaultTheme } from 'styled-components';
 
 import { theme as defaultTheme } from './defaultTheme';
 
 class ThemeSingleton {
   private static _instance: ThemeSingleton;
-  private _options: Theme;
+  private _options: DefaultTheme;
 
   private constructor() {
     this._options = defaultTheme;
@@ -14,11 +14,11 @@ class ThemeSingleton {
     return this._instance || (this._instance = new this());
   }
 
-  public get options(): Theme {
+  public get options(): DefaultTheme {
     return this._options;
   }
 
-  public set options(themeOptions: Theme) {
+  public set options(themeOptions: DefaultTheme) {
     const filteredOptions = Object.fromEntries(
       Object.entries(themeOptions).filter(([_, v]) => Boolean(v))
     );

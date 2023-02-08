@@ -1,6 +1,7 @@
 import React from 'react';
+
 import { FlexGridProps } from '../../types';
-import CustomBackground from './CustomBackground';
+import { CustomBackground } from './CustomBackground';
 
 const MyComponent = () => (
   <div>
@@ -15,7 +16,7 @@ const MyComponent = () => (
 export const data: FlexGridProps = {
   blockPadding: '',
   gap: '1rem',
-  columns: 4,
+  columns: 2,
   maxWidth: 960,
   breakPoints: { small: 767, large: 992 },
   as: 'article',

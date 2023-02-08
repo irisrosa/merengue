@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { BlockSet } from '@src/BlockSet';
-// import { Blocks } from '@src/Blocks';
+import { Blocks } from '@src/Blocks';
 import { theme } from '@src/theme';
 
 import {
@@ -22,7 +22,7 @@ export const FlexGrid: PolymorphicComponent<FlexGridProps> = React.forwardRef(
 
     return (
       <BlockSet {...blockSetAttributes} ref={ref}>
-        {/* {Boolean(blocks) && <Blocks blocks={blocks} />} */}
+        {Boolean(blocks) && <Blocks blocks={blocks} />}
         {children}
       </BlockSet>
     );

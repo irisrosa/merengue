@@ -1,15 +1,8 @@
 import React, { CSSProperties, ElementType, PropsWithChildren, ReactElement } from 'react';
 
-export type Theme = {
-  blockPadding?: boolean;
-  gap?: string;
-  breakPoints?: {
-    small: number;
-    large: number;
-  };
-  columns?: number;
-  maxWidth?: number;
-};
+import { DefaultTheme } from 'styled-components';
+
+export type PropsWithTheme<T> = T & { theme: DefaultTheme };
 
 export type BasicComponentProps = PropsWithChildren<{
   className?: string;
@@ -102,11 +95,13 @@ export type BlockProps = Partial<BlockData>;
 
 export type PolymorphicRef<C extends React.ElementType> = React.ComponentPropsWithRef<C>['ref'];
 
-export type PolymorphicComponentPropWithRef<C extends React.ElementType, Props = {}> =
-  React.PropsWithChildren<Props & { as?: C }> &
-    Omit<React.ComponentPropsWithoutRef<C>, 'as'> & {
-      ref?: PolymorphicRef<C>;
-    };
+export type PolymorphicComponentPropWithRef<
+  C extends React.ElementType,
+  Props = {}
+> = React.PropsWithChildren<Props & { as?: C }> &
+  Omit<React.ComponentPropsWithoutRef<C>, 'as'> & {
+    ref?: PolymorphicRef<C>;
+  };
 
 export type PolymorphicComponent<P> = <E extends React.ElementType = 'div'>(
   props: PolymorphicComponentPropWithRef<E, P>
