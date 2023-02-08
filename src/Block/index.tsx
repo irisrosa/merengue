@@ -58,7 +58,7 @@ export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
           Array(offset)
             .fill(0)
             .map(() => <StyledBlock />)}
-        <StyledBlock ref={ref} {...props} theme={theme.options}>
+        <StyledBlock {...props} ref={ref} theme={theme.options}>
           {hasBackground ? (
             <>
               <Background
@@ -75,11 +75,3 @@ export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
     );
   }
 );
-
-// const Test = () => {
-//   return (
-//     <Block as="div" href="#">
-//       Test
-//     </Block>
-//   );
-// };

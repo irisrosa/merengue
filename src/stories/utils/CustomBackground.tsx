@@ -10,7 +10,7 @@ export const CustomBackground = () => (
       top: 0,
       left: 0,
       color: 'white',
-      zIndex: 1,
+      zIndex: 0,
     }}
   >
     I'm the background component

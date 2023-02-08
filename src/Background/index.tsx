@@ -1,4 +1,4 @@
-import React, { ElementType } from 'react';
+import { ElementType } from 'react';
 
 import styled, { css } from 'styled-components';
 
@@ -26,7 +26,6 @@ const BackgroundStyled = styled(BackgroundComponent)`
   top: 0;
   left: 0;
   overflow: hidden;
-
   /**
     If the image is a custom component, it might require some styling to fit correctly
     */
@@ -43,7 +42,7 @@ const BackgroundStyled = styled(BackgroundComponent)`
         background-position: center;
       `;
     }
-  }}
+  }};
 `;
 
 export const Background: ElementType<BackgroundProps> = ({
