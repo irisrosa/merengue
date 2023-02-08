@@ -63,18 +63,14 @@ export const BlockSet: PolymorphicComponent<BlockSetProps> = React.forwardRef(
       [styles['extend-bg']]: extendBackground,
     });
 
-    console.log('3', theme.options);
     const { gap, columns, breakPoints, maxWidth } = theme.options;
 
-    console.log({ extendBackground, extendContent });
     let customStyle = {};
     if (!extendContent && extendBackground) {
       customStyle['gridTemplateColumns'] = `repeat(${columns}, ${
         Math.floor(maxWidth - (columns - 1) * convertRemToPixels(gap)) / columns
       }px)`;
     }
-
-    console.log(customStyle);
 
     return (
       <div ref={ref} className={cns} style={customStyle}>

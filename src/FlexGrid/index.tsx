@@ -18,9 +18,7 @@ export const FlexGrid: PolymorphicComponent<FlexGridProps> = React.forwardRef(
   ) => {
     const { blockPadding, gap, columns, maxWidth, breakPoints, ...blockSetAttributes } = props;
 
-    console.log('1', theme.options);
     theme.options = { blockPadding, gap, columns, maxWidth, breakPoints };
-    console.log('2', theme.options);
 
     return (
       <BlockSet {...blockSetAttributes} ref={ref}>
