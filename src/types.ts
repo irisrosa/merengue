@@ -88,17 +88,15 @@ export type GridOptions = {
   };
 };
 
-export type GridData = BackgroundProps &
+export type FlexGridProps = BackgroundProps &
   GridOptions & {
-    blocks: BlockData[];
+    blocks?: BlockData[];
     as?: keyof AllowedTags;
     extendBackground?: boolean;
     extendContent?: boolean;
   };
 
-export type FlexGridProps = Partial<GridData>;
-
-export type BlockSetProps = Omit<GridData, keyof GridOptions | 'blocks'>;
+export type BlockSetProps = Omit<FlexGridProps, keyof GridOptions | 'blocks'>;
 
 export type BlockProps = Partial<BlockData>;
 
