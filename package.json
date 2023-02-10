@@ -1,5 +1,5 @@
 {
-  "name": "flexgrid",
+  "name": "merengue",
   "version": "1.0.0",
   "module": "build/module.js",
   "types": "build/index.d.ts",

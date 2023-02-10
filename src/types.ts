@@ -1,4 +1,4 @@
-import React, { CSSProperties, ElementType, PropsWithChildren, ReactElement } from 'react';
+import React, { CSSProperties, PropsWithChildren, ReactElement } from 'react';
 
 import { DefaultTheme } from 'styled-components';
 
@@ -26,7 +26,7 @@ export type BackgroundProps = {
 
 export interface BlockData extends BackgroundProps {
   blockPadding?: false | string;
-  Content: ElementType;
+  renderContent: () => ReactElement;
   size?: number;
   as?: keyof AllowedTags;
   offset?: number;
@@ -59,6 +59,7 @@ export type AllowedTags = Pick<
   | 'main'
   | 'nav'
   | 'ol'
+  | 'ul'
   | 'li'
   | 'p'
   | 'picture'
