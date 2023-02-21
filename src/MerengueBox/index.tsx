@@ -5,15 +5,15 @@ import { BlockSet } from '@src/BlockSet';
 import { theme } from '@src/theme';
 
 import {
-  FlexGridProps,
+  MerengueData,
   PolymorphicComponent,
   PolymorphicComponentPropWithRef,
   PolymorphicRef,
 } from '../types';
 
-export const FlexGrid: PolymorphicComponent<FlexGridProps> = React.forwardRef(
+export const MerengueBox: PolymorphicComponent<MerengueData> = React.forwardRef(
   <C extends React.ElementType = 'div'>(
-    { blocks, children, ...props }: PolymorphicComponentPropWithRef<C, FlexGridProps>,
+    { blocks, children, ...props }: PolymorphicComponentPropWithRef<C, MerengueData>,
     ref: PolymorphicRef<C>
   ) => {
     const { blockPadding, gap, columns, maxWidth, breakPoints, ...blockSetAttributes } = props;

@@ -1,3 +1,3 @@
-export type { FlexGridProps as MerengueData } from 'types';
+export type { MerengueData } from 'types';
 export { Block } from './Block';
-export { FlexGrid as MerengueBox } from './FlexGrid';
+export { MerengueBox } from './MerengueBox';

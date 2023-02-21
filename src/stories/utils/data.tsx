@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FlexGridProps } from '../../types';
+import { MerengueData } from '../../types';
 import { CustomBackground } from './CustomBackground';
 
 const MyComponent = () => (
@@ -13,7 +13,7 @@ const MyComponent = () => (
   </div>
 );
 
-export const data: FlexGridProps = {
+export const data: MerengueData = {
   blockPadding: '',
   gap: '1rem',
   columns: 2,

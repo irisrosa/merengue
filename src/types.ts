@@ -82,7 +82,7 @@ export type GridOptions = {
   };
 };
 
-export type FlexGridProps = BackgroundProps &
+export type MerengueData = BackgroundProps &
   GridOptions & {
     blocks?: BlockData[];
     as?: keyof AllowedTags;
@@ -90,7 +90,7 @@ export type FlexGridProps = BackgroundProps &
     extendContent?: boolean;
   };
 
-export type BlockSetProps = Omit<FlexGridProps, keyof GridOptions | 'blocks'>;
+export type BlockSetProps = Omit<MerengueData, keyof GridOptions | 'blocks'>;
 
 export type BlockProps = Partial<BlockData>;
 
