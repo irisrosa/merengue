@@ -1,10 +1,10 @@
-import { DefaultTheme } from 'styled-components';
+import { GridOptions } from '@src/types';
 
 import { theme as defaultTheme } from './defaultTheme';
 
 class ThemeSingleton {
   private static _instance: ThemeSingleton;
-  private _options: DefaultTheme;
+  private _options: GridOptions;
 
   private constructor() {
     this._options = defaultTheme;
@@ -14,11 +14,11 @@ class ThemeSingleton {
     return this._instance || (this._instance = new this());
   }
 
-  public get options(): DefaultTheme {
+  public get options(): GridOptions {
     return this._options;
   }
 
-  public set options(themeOptions: DefaultTheme) {
+  public set options(themeOptions: GridOptions) {
     const filteredOptions = Object.fromEntries(
       Object.entries(themeOptions).filter(([_, v]) => Boolean(v))
     );

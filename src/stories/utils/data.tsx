@@ -15,10 +15,9 @@ const MyComponent = () => (
 
 export const data: MerengueData = {
   blockPadding: '',
-  gap: '1rem',
+  gap: 1,
   columns: 2,
-  maxWidth: 960,
-  breakPoints: { small: 767, large: 992 },
+  maxWidth: '960px',
   as: 'article',
   renderCustomBackground: CustomBackground,
   extendBackground: false,

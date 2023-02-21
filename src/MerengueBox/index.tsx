@@ -16,9 +16,9 @@ export const MerengueBox: PolymorphicComponent<MerengueData> = React.forwardRef(
     { blocks, children, ...props }: PolymorphicComponentPropWithRef<C, MerengueData>,
     ref: PolymorphicRef<C>
   ) => {
-    const { blockPadding, gap, columns, maxWidth, breakPoints, ...blockSetAttributes } = props;
+    const { blockPadding, gap, columns, maxWidth, ...blockSetAttributes } = props;
 
-    theme.options = { blockPadding, gap, columns, maxWidth, breakPoints };
+    theme.options = { blockPadding, gap, columns, maxWidth };
 
     return (
       <BlockSet {...blockSetAttributes} ref={ref}>

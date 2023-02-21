@@ -1,0 +1,18 @@
+@use '../theme/mixins';
+@use '../theme/variables';
+
+.block {
+  @include mixins.grid-column-x;
+  
+  @include mixins.small {
+    grid-column: 1/-1;
+  }
+  
+  display: grid;
+  position: relative;
+}
+
+.blockContent {
+  position: relative;
+  z-index: 1;
+}
