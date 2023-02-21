@@ -1,6 +1,4 @@
-import { DefaultTheme } from 'styled-components';
-
-export const theme: DefaultTheme = {
+export const theme = {
   blockPadding: false,
   gap: '1rem',
   breakPoints: { small: 767, large: 992 },

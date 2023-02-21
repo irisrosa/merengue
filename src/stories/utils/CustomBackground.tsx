@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CustomBackgroundComponent = () => (
+export const CustomBackground = () => (
   <div
     style={{
       position: 'absolute',
@@ -10,11 +10,9 @@ const CustomBackgroundComponent = () => (
       top: 0,
       left: 0,
       color: 'white',
-      zIndex: 1,
+      zIndex: 0,
     }}
   >
     I'm the background component
   </div>
 );
-
-export default CustomBackgroundComponent;

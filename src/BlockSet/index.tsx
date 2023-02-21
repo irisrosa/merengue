@@ -1,43 +1,33 @@
-import React, { ForwardedRef } from 'react';
+import React from 'react';
 
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { Background } from '@src/Background';
+import { theme } from '@src/theme';
 import {
   BlockSetProps,
   PolymorphicComponent,
   PolymorphicComponentPropWithRef,
   PolymorphicRef,
+  PropsWithTheme,
 } from '@src/types';
 
-const convertRemToPixels: (arg: string | false) => number = rem =>
-  rem ? parseFloat(rem) * parseFloat(getComputedStyle(document.documentElement).fontSize) : 1;
-
-const BlockSetStyled = styled.div<BlockSetProps>`
+const BlockSetStyled = styled.div<PropsWithTheme<BlockSetProps>>`
   position: relative;
   display: grid;
   gap: ${({ theme }) => theme.gap && `${theme.gap}`};
   grid-template-columns: repeat(${({ theme }) => theme.columns}, 1fr);
 
   @media (min-width: ${({ theme }) => theme.breakPoints.large}px) {
-    max-width: ${({ theme, extendContent, extendBackground }) =>
-      extendContent || extendBackground ? '100%' : theme.maxWidth}px;
-
-    ${({ theme, extendBackground }) =>
-      extendBackground &&
-      css`
-        grid-template-columns: repeat(
-          ${theme.columns},
-          ${Math.floor(
-            (theme.maxWidth - (theme.columns - 1) * convertRemToPixels(theme.gap)) / theme.columns
-          )}px
-        );
-        justify-content: center;
-      `}
+    max-width: ${({ theme, extendContent }) => (extendContent ? '100%' : theme.maxWidth)}px;
   }
 
   width: 100%;
   margin: 0 auto;
+`;
+
+const BlockSetWrapper = styled.div`
+  position: relative;
 `;
 
 export const BlockSet: PolymorphicComponent<BlockSetProps> = React.forwardRef(
@@ -46,14 +36,29 @@ export const BlockSet: PolymorphicComponent<BlockSetProps> = React.forwardRef(
       children,
       renderCustomBackground,
       backgroundImage,
+      extendBackground,
       ...props
     }: PolymorphicComponentPropWithRef<C, BlockSetProps>,
     ref: PolymorphicRef<C>
   ) => {
     const hasBackground = Boolean(backgroundImage) || Boolean(renderCustomBackground);
 
+    if (hasBackground && extendBackground) {
+      return (
+        <BlockSetWrapper>
+          <Background
+            renderCustomBackground={renderCustomBackground}
+            backgroundImage={backgroundImage}
+          />
+          <BlockSetStyled {...props} theme={theme.options} ref={ref}>
+            {children}
+          </BlockSetStyled>
+        </BlockSetWrapper>
+      );
+    }
+
     return (
-      <BlockSetStyled ref={ref} {...props}>
+      <BlockSetStyled {...props} theme={theme.options} ref={ref}>
         {hasBackground && (
           <Background
             renderCustomBackground={renderCustomBackground}

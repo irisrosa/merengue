@@ -1,13 +1,13 @@
 import { ElementType } from 'react';
 
 import { Block } from '@src/Block';
-import { GridData } from '@src/types';
+import { MerengueData } from '@src/types';
 
-export const Blocks: ElementType<Pick<GridData, 'blocks'>> = ({ blocks }) => (
+export const Blocks: ElementType<Required<Pick<MerengueData, 'blocks'>>> = ({ blocks }) => (
   <>
-    {blocks.map(({ Content, ...block }, blockKey) => (
+    {blocks.map(({ renderContent, ...block }, blockKey) => (
       <Block key={blockKey} {...block}>
-        <Content />
+        {renderContent()}
       </Block>
     ))}
   </>

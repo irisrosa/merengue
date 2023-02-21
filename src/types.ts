@@ -1,6 +1,8 @@
-import React, { ElementType, ForwardedRef, PropsWithChildren, ReactElement } from 'react';
+import React, { CSSProperties, PropsWithChildren, ReactElement } from 'react';
 
-import { CSSProperties } from 'styled-components';
+import { DefaultTheme } from 'styled-components';
+
+export type PropsWithTheme<T> = T & { theme: DefaultTheme };
 
 export type BasicComponentProps = PropsWithChildren<{
   className?: string;
@@ -24,7 +26,7 @@ export type BackgroundProps = {
 
 export interface BlockData extends BackgroundProps {
   blockPadding?: false | string;
-  Content: ElementType;
+  renderContent: () => ReactElement;
   size?: number;
   as?: keyof AllowedTags;
   offset?: number;
@@ -57,6 +59,7 @@ export type AllowedTags = Pick<
   | 'main'
   | 'nav'
   | 'ol'
+  | 'ul'
   | 'li'
   | 'p'
   | 'picture'
@@ -79,27 +82,27 @@ export type GridOptions = {
   };
 };
 
-export type GridData = BackgroundProps &
+export type MerengueData = BackgroundProps &
   GridOptions & {
-    blocks: BlockData[];
+    blocks?: BlockData[];
     as?: keyof AllowedTags;
     extendBackground?: boolean;
     extendContent?: boolean;
   };
 
-export type FlexGridProps = Partial<GridData>;
-
-export type BlockSetProps = Omit<GridData, keyof GridOptions | 'blocks'>;
+export type BlockSetProps = Omit<MerengueData, keyof GridOptions | 'blocks'>;
 
 export type BlockProps = Partial<BlockData>;
 
 export type PolymorphicRef<C extends React.ElementType> = React.ComponentPropsWithRef<C>['ref'];
 
-export type PolymorphicComponentPropWithRef<C extends React.ElementType, Props = {}> =
-  React.PropsWithChildren<Props & { as?: C }> &
-    Omit<React.ComponentPropsWithoutRef<C>, 'as'> & {
-      ref?: PolymorphicRef<C>;
-    };
+export type PolymorphicComponentPropWithRef<
+  C extends React.ElementType,
+  Props = {}
+> = React.PropsWithChildren<Props & { as?: C }> &
+  Omit<React.ComponentPropsWithoutRef<C>, 'as'> & {
+    ref?: PolymorphicRef<C>;
+  };
 
 export type PolymorphicComponent<P> = <E extends React.ElementType = 'div'>(
   props: PolymorphicComponentPropWithRef<E, P>

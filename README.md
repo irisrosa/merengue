@@ -1,4 +1,4 @@
-# flexgrid
+# Merengue
 
 - [ ] Remove styled-components dependency
 - [x] Review the type implementation of PolymorphicComponent

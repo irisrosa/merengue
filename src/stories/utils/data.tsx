@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { FlexGridProps } from '../types';
-import CustomBackgroundComponent from './CustomBackgroundComponent';
+import { MerengueData } from '../../types';
+import { CustomBackground } from './CustomBackground';
 
 const MyComponent = () => (
   <div>
@@ -13,27 +13,27 @@ const MyComponent = () => (
   </div>
 );
 
-export const data: FlexGridProps = {
+export const data: MerengueData = {
   blockPadding: '',
   gap: '1rem',
-  columns: 4,
+  columns: 2,
   maxWidth: 960,
   breakPoints: { small: 767, large: 992 },
   as: 'article',
-  renderCustomBackground: CustomBackgroundComponent,
+  renderCustomBackground: CustomBackground,
   extendBackground: false,
   extendContent: false,
   blocks: [
     {
       as: 'figure',
       size: 1,
-      Content: MyComponent,
+      renderContent: MyComponent,
       renderCustomBackground: undefined,
       backgroundImage: undefined,
     },
     {
       size: 2,
-      Content: () => (
+      renderContent: () => (
         <div>
           {' '}
           2 Lorem velit aliquip enim velit adipisicing magna. Elit tempor occaecat quis amet nulla.
@@ -48,7 +48,7 @@ export const data: FlexGridProps = {
     },
     {
       size: 1,
-      Content: () => (
+      renderContent: () => (
         <div>
           3 Lorem velit aliquip enim velit adipisicing magna. Elit tempor occaecat quis amet nulla.
           Magna proident cillum sunt irure id anim aliquip quis aliquip minim occaecat. Ullamco
@@ -62,7 +62,7 @@ export const data: FlexGridProps = {
     },
     {
       size: 1,
-      Content: () => (
+      renderContent: () => (
         <div>
           4 Lorem velit aliquip enim velit adipisicing magna. Elit tempor occaecat quis amet nulla.
           Magna proident cillum sunt irure id anim aliquip quis aliquip minim occaecat. Ullamco
@@ -76,7 +76,7 @@ export const data: FlexGridProps = {
     },
     {
       size: 1,
-      Content: () => (
+      renderContent: () => (
         <div>
           5 Lorem velit aliquip enim velit adipisicing magna. Elit tempor occaecat quis amet nulla.
           Magna proident cillum sunt irure id anim aliquip quis aliquip minim occaecat. Ullamco

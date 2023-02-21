@@ -14,5 +14,7 @@
   "semi": true,
   "singleQuote": true,
   "importOrder": ["^react(.*)", "styled-components/(.*)", "<THIRD_PARTY_MODULES>", "@src/(.*)", "^[./]"],
-  "importOrderSeparation": true
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderCaseInsensitive": true
 }
