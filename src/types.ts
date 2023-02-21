@@ -1,9 +1,5 @@
 import React, { CSSProperties, PropsWithChildren, ReactElement } from 'react';
 
-import { DefaultTheme } from 'styled-components';
-
-export type PropsWithTheme<T> = T & { theme: DefaultTheme };
-
 export type BasicComponentProps = PropsWithChildren<{
   className?: string;
   style?: CSSProperties;
@@ -71,15 +67,10 @@ export type AllowedTags = Pick<
 export type AllowedProps<T extends keyof AllowedTags> = React.ComponentPropsWithoutRef<T>;
 
 export type GridOptions = {
-  blockPadding?: false | string;
-  /** Preferably use rem unit to set the gap  */
-  gap?: false | string;
-  columns?: number;
-  maxWidth?: number;
-  breakPoints?: {
-    small: number;
-    large: number;
-  };
+  blockPadding?: string;
+  gap?: 0 | 1 | 2 | 3 | 4;
+  columns?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+  maxWidth?: string;
 };
 
 export type MerengueData = BackgroundProps &

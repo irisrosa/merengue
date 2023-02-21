@@ -1,0 +1,35 @@
+@use 'variables';
+
+@mixin gap-x {
+  @for $i from 0 through variables.$gap-max {
+    &.gap#{$i} { gap: $i + rem; }
+  }
+}
+
+@mixin grid-template-columns-x {
+  @for $i from 1 through variables.$columns-max {
+    &.column#{$i} { 
+      grid-template-columns: repeat($i, 1fr);
+    }
+  }
+}
+
+@mixin grid-column-x {
+  @for $i from 0 through variables.$columns-max {
+    &.gridColumn#{$i} { grid-column: span $i; }
+  }
+}
+
+
+@mixin small {
+  @media screen and (max-width: variables.$breakpoint-small) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media screen and (min-width: variables.$breakpoint-large) {
+    @content;
+  }
+}
+

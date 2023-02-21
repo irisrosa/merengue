@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styled from 'styled-components';
+import classnames from 'classnames';
 
 import { Background } from '@src/Background';
 import { theme } from '@src/theme';
@@ -9,26 +9,9 @@ import {
   PolymorphicComponent,
   PolymorphicComponentPropWithRef,
   PolymorphicRef,
-  PropsWithTheme,
 } from '@src/types';
 
-const BlockSetStyled = styled.div<PropsWithTheme<BlockSetProps>>`
-  position: relative;
-  display: grid;
-  gap: ${({ theme }) => theme.gap && `${theme.gap}`};
-  grid-template-columns: repeat(${({ theme }) => theme.columns}, 1fr);
-
-  @media (min-width: ${({ theme }) => theme.breakPoints.large}px) {
-    max-width: ${({ theme, extendContent }) => (extendContent ? '100%' : theme.maxWidth)}px;
-  }
-
-  width: 100%;
-  margin: 0 auto;
-`;
-
-const BlockSetWrapper = styled.div`
-  position: relative;
-`;
+import * as styles from './BlockSet.module.scss';
 
 export const BlockSet: PolymorphicComponent<BlockSetProps> = React.forwardRef(
   <C extends React.ElementType = 'div'>(
@@ -37,28 +20,43 @@ export const BlockSet: PolymorphicComponent<BlockSetProps> = React.forwardRef(
       renderCustomBackground,
       backgroundImage,
       extendBackground,
-      ...props
+      extendContent,
     }: PolymorphicComponentPropWithRef<C, BlockSetProps>,
     ref: PolymorphicRef<C>
   ) => {
     const hasBackground = Boolean(backgroundImage) || Boolean(renderCustomBackground);
 
+    const cn = classnames(
+      styles.blockset,
+      styles[`column${theme.options.columns}`],
+      styles[`gap${theme.options.gap}`],
+      { [styles.extendContent]: extendContent }
+    );
+
+    const inlineStyles = {
+      maxWidth: theme.options.maxWidth,
+    };
+
+    const blockSetProps = {
+      className: cn,
+      style: inlineStyles,
+      ref,
+    };
+
     if (hasBackground && extendBackground) {
       return (
-        <BlockSetWrapper>
+        <div className={classnames(styles.wrapper)}>
           <Background
             renderCustomBackground={renderCustomBackground}
             backgroundImage={backgroundImage}
           />
-          <BlockSetStyled {...props} theme={theme.options} ref={ref}>
-            {children}
-          </BlockSetStyled>
-        </BlockSetWrapper>
+          <div {...blockSetProps}>{children}</div>
+        </div>
       );
     }
 
     return (
-      <BlockSetStyled {...props} theme={theme.options} ref={ref}>
+      <div {...blockSetProps}>
         {hasBackground && (
           <Background
             renderCustomBackground={renderCustomBackground}
@@ -67,7 +65,7 @@ export const BlockSet: PolymorphicComponent<BlockSetProps> = React.forwardRef(
         )}
 
         {children}
-      </BlockSetStyled>
+      </div>
     );
   }
 );

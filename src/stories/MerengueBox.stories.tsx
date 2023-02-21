@@ -27,7 +27,7 @@ export const Nested: Story<MerengueData> = props => {
         voluptatem voluptatum. Sit facere fugit laudantium adipisci itaque similique incidunt, quos
         assumenda totam! Eaque magni culpa quisquam.
       </Block>
-      <Block>
+      <Block size={2}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat optio nemo, animi eligendi
         voluptatem voluptatum. Sit facere fugit laudantium adipisci itaque similique incidunt, quos
         assumenda totam! Eaque magni culpa quisquam.
@@ -59,7 +59,7 @@ export const Nested: Story<MerengueData> = props => {
 Nested.args = {
   extendContent: false,
   extendBackground: true,
-  maxWidth: 960,
+  maxWidth: 600,
   columns: 4,
   as: 'div',
 };
