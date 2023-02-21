@@ -22,9 +22,13 @@ export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
       offset,
       size,
       blockPadding,
-    }: PolymorphicComponentPropWithRef<C, BlockProps>,
+      as,
+      ...props
+    }: PolymorphicComponentPropWithRef<C, Omit<BlockProps, 'as'>>,
     ref: PolymorphicRef<C>
   ) => {
+    const Element = as || 'div';
+
     const hasBackground = Boolean(backgroundImage) || Boolean(renderCustomBackground);
 
     const cn = classNames(styles.block, styles[`gridColumn${size}`]);
@@ -36,6 +40,7 @@ export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
       className: cn,
       style: inlineStyles,
       ref,
+      ...props,
     };
 
     return (
@@ -44,7 +49,7 @@ export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
           Array(offset)
             .fill(0)
             .map(() => <div {...blockProps} />)}
-        <div {...blockProps}>
+        <Element {...blockProps}>
           {hasBackground ? (
             <>
               <Background
@@ -56,7 +61,7 @@ export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
           ) : (
             children
           )}
-        </div>
+        </Element>
       </>
     );
   }

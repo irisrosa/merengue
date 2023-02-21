@@ -21,9 +21,13 @@ export const BlockSet: PolymorphicComponent<BlockSetProps> = React.forwardRef(
       backgroundImage,
       extendBackground,
       extendContent,
-    }: PolymorphicComponentPropWithRef<C, BlockSetProps>,
+      as,
+      ...props
+    }: PolymorphicComponentPropWithRef<C, Omit<BlockSetProps, 'as'>>,
     ref: PolymorphicRef<C>
   ) => {
+    const Element = as || 'div';
+
     const hasBackground = Boolean(backgroundImage) || Boolean(renderCustomBackground);
 
     const cn = classnames(
@@ -41,6 +45,7 @@ export const BlockSet: PolymorphicComponent<BlockSetProps> = React.forwardRef(
       className: cn,
       style: inlineStyles,
       ref,
+      ...props,
     };
 
     if (hasBackground && extendBackground) {
@@ -50,13 +55,13 @@ export const BlockSet: PolymorphicComponent<BlockSetProps> = React.forwardRef(
             renderCustomBackground={renderCustomBackground}
             backgroundImage={backgroundImage}
           />
-          <div {...blockSetProps}>{children}</div>
+          <Element {...blockSetProps}>{children}</Element>
         </div>
       );
     }
 
     return (
-      <div {...blockSetProps}>
+      <Element {...blockSetProps}>
         {hasBackground && (
           <Background
             renderCustomBackground={renderCustomBackground}
@@ -65,7 +70,7 @@ export const BlockSet: PolymorphicComponent<BlockSetProps> = React.forwardRef(
         )}
 
         {children}
-      </div>
+      </Element>
     );
   }
 );

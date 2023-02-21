@@ -61,5 +61,4 @@ Nested.args = {
   extendBackground: true,
   maxWidth: 600,
   columns: 4,
-  as: 'div',
 };
