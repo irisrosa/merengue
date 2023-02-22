@@ -27,7 +27,7 @@ export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
     }: PolymorphicComponentPropWithRef<C, Omit<BlockProps, 'as'>>,
     ref: PolymorphicRef<C>
   ) => {
-    const Element = as || 'div';
+    const Element = as || theme.options.blockAs || 'div';
 
     const hasBackground = Boolean(backgroundImage) || Boolean(renderCustomBackground);
 

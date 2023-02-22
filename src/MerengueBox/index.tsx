@@ -16,13 +16,13 @@ export const MerengueBox: PolymorphicComponent<MerengueData> = React.forwardRef(
     { blocks, children, ...props }: PolymorphicComponentPropWithRef<C, MerengueData>,
     ref: PolymorphicRef<C>
   ) => {
-    const { blockPadding, gap, columns, maxWidth, ...blockSetAttributes } = props;
+    const { blockPadding, gap, columns, maxWidth, blockAs, ...blockSetAttributes } = props;
 
-    theme.options = { blockPadding, gap, columns, maxWidth };
+    theme.options = { blockPadding, gap, columns, maxWidth, blockAs };
 
     return (
       <BlockSet {...blockSetAttributes} ref={ref}>
-        {Boolean(blocks) && <Blocks blocks={blocks} />}
+        {Boolean(blocks) && <Blocks blocks={blocks} blockAs={blockAs} />}
         {children}
       </BlockSet>
     );
