@@ -36,7 +36,7 @@ CustomDOMElement.args = {
   blocks: data.blocks,
 };
 
-export const Nested: Story<MerengueData> = props => {
+export const WithBlockComponents: Story<MerengueData> = props => {
   const ref = useRef(null);
   const ref2 = useRef(null);
   return (
@@ -69,10 +69,16 @@ export const Nested: Story<MerengueData> = props => {
   );
 };
 
-Nested.args = {
+WithBlockComponents.args = {
   extendContent: false,
   extendBackground: true,
   columns: 4,
   blockAs: 'li',
   as: 'ol',
+};
+
+export const ExtendContent: Story<MerengueData> = props => <MerengueBox {...props} />;
+ExtendContent.args = {
+  extendContent: true,
+  blocks: data.blocks,
 };

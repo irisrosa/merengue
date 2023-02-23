@@ -21,7 +21,7 @@ const args = {
   blockAs: 'li',
   blockPadding: '',
   columns: 4,
-  extendBackground: true,
+  extendBackground: false,
   extendContent: false,
   gap: 1,
   maxWidth: '960px',
@@ -30,6 +30,12 @@ const args = {
 
 export const Image: Story<MerengueData> = props => <MerengueBox {...props} />;
 export const CustomComponent: Story<MerengueData> = props => <MerengueBox {...props} />;
+export const ExtendBackground: Story<MerengueData> = props => <MerengueBox {...props} />;
 
 Image.args = { ...args, backgroundImage: { src: 'https://picsum.photos/800/500' } };
 CustomComponent.args = { ...args, renderCustomBackground: CustomBackground };
+ExtendBackground.args = {
+  ...args,
+  extendBackground: true,
+  backgroundImage: { src: 'https://picsum.photos/800/500' },
+};
