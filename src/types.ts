@@ -1,9 +1,8 @@
-import React, { CSSProperties, PropsWithChildren, ReactElement } from 'react';
+import React, { HTMLAttributes, PropsWithChildren, ReactElement } from 'react';
 
-export type BasicComponentProps = PropsWithChildren<{
-  className?: string;
-  style?: CSSProperties;
-}>;
+type StyleProps = Pick<HTMLAttributes<any>, 'style' | 'className'>;
+
+export type BasicComponentProps = PropsWithChildren<StyleProps>;
 
 export type ImageType = {
   [key: string]: unknown;
@@ -20,13 +19,14 @@ export type BackgroundProps = {
   backgroundImage?: ImageType;
 };
 
-export interface BlockData extends BackgroundProps {
-  blockPadding?: false | string;
-  renderContent: () => ReactElement;
-  size?: number;
-  as?: keyof AllowedTags;
-  offset?: number;
-}
+export type BlockData = BackgroundProps &
+  StyleProps & {
+    blockPadding?: false | string;
+    renderContent: () => ReactElement;
+    size?: number;
+    as?: keyof AllowedTags;
+    offset?: number;
+  };
 
 export type AllowedTags = Pick<
   HTMLElementTagNameMap,
@@ -64,8 +64,6 @@ export type AllowedTags = Pick<
   | 'summary'
 >;
 
-export type AllowedProps<T extends keyof AllowedTags> = React.ComponentPropsWithoutRef<T>;
-
 export type GridOptions = {
   blockPadding?: string;
   gap?: 0 | 1 | 2 | 3 | 4;
@@ -75,6 +73,7 @@ export type GridOptions = {
 };
 
 export type MerengueData = BackgroundProps &
+  StyleProps &
   GridOptions & {
     blocks?: BlockData[];
     as?: keyof AllowedTags;
