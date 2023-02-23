@@ -5,11 +5,11 @@ import { MerengueData } from '@src/types';
 
 export const Blocks: ElementType<Required<Pick<MerengueData, 'blocks' | 'blockAs'>>> = ({
   blocks,
-  blockAs = 'div'
+  blockAs = 'div',
 }) => (
   <>
     {blocks.map(({ renderContent, ...block }, blockKey) => (
-      <Block key={blockKey} {...block} as={blockAs}>
+      <Block key={blockKey} as={blockAs} {...block}>
         {renderContent()}
       </Block>
     ))}

@@ -10,6 +10,10 @@
   
   display: grid;
   position: relative;
+
+  img {
+    max-width: 100%;
+  }
 }
 
 .blockContent {
