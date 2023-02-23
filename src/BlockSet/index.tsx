@@ -33,12 +33,11 @@ export const BlockSet: PolymorphicComponent<BlockSetProps> = React.forwardRef(
     const cn = classnames(
       styles.blockset,
       styles[`column${theme.options.columns}`],
-      styles[`gap${theme.options.gap}`],
-      { [styles.extendContent]: extendContent }
+      styles[`gap${theme.options.gap}`]
     );
 
     const inlineStyles = {
-      maxWidth: theme.options.maxWidth,
+      maxWidth: extendContent ? '100%' : theme.options.maxWidth,
     };
 
     const blockSetProps = {

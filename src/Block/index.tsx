@@ -56,7 +56,7 @@ export const Block: PolymorphicComponent<BlockProps> = React.forwardRef(
                 renderCustomBackground={renderCustomBackground}
                 backgroundImage={backgroundImage}
               />
-              <div className={styles.blockContent}>{children}</div>
+              {children}
             </>
           ) : (
             children

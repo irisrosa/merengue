@@ -1,18 +1,9 @@
 import React from 'react';
 
+import * as styles from './CustomBackground.module.scss';
+
 export const CustomBackground = () => (
-  <div
-    style={{
-      position: 'absolute',
-      background: 'rgba(0, 0, 0, 0.5)',
-      width: '100%',
-      height: '100%',
-      top: 0,
-      left: 0,
-      color: 'white',
-      zIndex: 0,
-    }}
-  >
-    I'm the background component
+  <div className={styles.bg}>
+    <i>I'm the custom background component</i>
   </div>
 );
