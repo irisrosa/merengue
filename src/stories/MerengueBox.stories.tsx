@@ -7,6 +7,7 @@ import { MerengueBox } from '../MerengueBox';
 import { MerengueData } from '../types';
 import { CustomBackground } from './utils/CustomBackground';
 import { data } from './utils/data';
+import { RandomArticle } from './utils/RandomArticle';
 
 export const FromDataObject: Story<MerengueData> = props => <MerengueBox {...data} {...props} />;
 
@@ -22,49 +23,28 @@ FromDataObject.args = {
   renderCustomBackground: CustomBackground,
 };
 
-const BlockContent = () => (
-  <>
-    <img src="http://placeimg.com/640/480/city" style={{ maxWidth: '100%' }} />
-    <h3>Transform</h3>
-    <p>
-      Ut quia qui eius. Veritatis nam unde. Inventore enim velit aut. Quis animi voluptas tempore
-      sed quibusdam doloribus ullam. Ab architecto fuga quo.
-    </p>
-  </>
-);
-
 export const Nested: Story<MerengueData> = props => {
   const ref = useRef(null);
   const ref2 = useRef(null);
   return (
-    <MerengueBox {...props} as="ol" ref={ref}>
-      <Block as="li" ref={ref2} onClick={() => console.log({ ref, ref2 })}>
-        <BlockContent />
+    <MerengueBox {...props} ref={ref}>
+      <Block ref={ref2} onClick={() => console.log({ ref, ref2 })}>
+        <RandomArticle />
       </Block>
       <Block>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat optio nemo, animi eligendi
-        voluptatem voluptatum. Sit facere fugit laudantium adipisci itaque similique incidunt, quos
-        assumenda totam! Eaque magni culpa quisquam.
+        <RandomArticle />
       </Block>
       <Block>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat optio nemo, animi eligendi
-        voluptatem voluptatum. Sit facere fugit laudantium adipisci itaque similique incidunt, quos
-        assumenda totam! Eaque magni culpa quisquam.
+        <RandomArticle />
       </Block>
       <Block>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat optio nemo, animi eligendi
-        voluptatem voluptatum. Sit facere fugit laudantium adipisci itaque similique incidunt, quos
-        assumenda totam! Eaque magni culpa quisquam.
+        <RandomArticle />
       </Block>
       <Block>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat optio nemo, animi eligendi
-        voluptatem voluptatum. Sit facere fugit laudantium adipisci itaque similique incidunt, quos
-        assumenda totam! Eaque magni culpa quisquam.
+        <RandomArticle />
       </Block>
       <Block>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat optio nemo, animi eligendi
-        voluptatem voluptatum. Sit facere fugit laudantium adipisci itaque similique incidunt, quos
-        assumenda totam! Eaque magni culpa quisquam.
+        <RandomArticle />
       </Block>
     </MerengueBox>
   );
@@ -73,5 +53,7 @@ export const Nested: Story<MerengueData> = props => {
 Nested.args = {
   extendContent: false,
   extendBackground: true,
-  columns: 4,
+  columns: 3,
+  blockAs: 'li',
+  as: 'ol',
 };
