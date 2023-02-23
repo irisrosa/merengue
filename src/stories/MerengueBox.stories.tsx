@@ -5,22 +5,21 @@ import { Story } from '@ladle/react';
 import { Block } from '../Block';
 import { MerengueBox } from '../MerengueBox';
 import { MerengueData } from '../types';
-import { CustomBackground } from './utils/CustomBackground';
 import { data } from './utils/data';
 import { RandomArticle } from './utils/RandomArticle';
 
-export const FromDataObject: Story<MerengueData> = props => <MerengueBox {...data} {...props} />;
+export const FromDataObject: Story<MerengueData> = props => <MerengueBox {...props} />;
 
 FromDataObject.args = {
   as: 'ol',
   blockAs: 'li',
   blockPadding: '',
-  columns: 4,
+  columns: 3,
   extendBackground: true,
   extendContent: false,
   gap: 1,
   maxWidth: '960px',
-  renderCustomBackground: CustomBackground,
+  blocks: data.blocks,
 };
 
 export const Nested: Story<MerengueData> = props => {
@@ -46,6 +45,12 @@ export const Nested: Story<MerengueData> = props => {
       <Block>
         <RandomArticle />
       </Block>
+      <Block>
+        <RandomArticle />
+      </Block>
+      <Block>
+        <RandomArticle />
+      </Block>
     </MerengueBox>
   );
 };
@@ -53,7 +58,7 @@ export const Nested: Story<MerengueData> = props => {
 Nested.args = {
   extendContent: false,
   extendBackground: true,
-  columns: 3,
+  columns: 4,
   blockAs: 'li',
   as: 'ol',
 };
