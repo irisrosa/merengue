@@ -4,6 +4,7 @@ type StyleProps = Pick<HTMLAttributes<any>, 'style' | 'className'>;
 
 export type BasicComponentProps = PropsWithChildren<StyleProps>;
 
+// Currently only src is used
 export type ImageType = {
   [key: string]: unknown;
   alt?: string;

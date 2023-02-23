@@ -1,22 +1,20 @@
 import { ElementType } from 'react';
 
-// const BackgroundStyled = styled(BackgroundComponent)`
-import { BackgroundProps, BasicComponentProps } from '@src/types';
+import { BackgroundProps, ImageType } from '@src/types';
 
 import * as styles from './Background.module.scss';
 
-export interface BackgroundInterface extends BasicComponentProps {
-  src?: string;
-  alt?: string;
-  overlay?: boolean;
-}
+const BackgroundComponent = ({ overlay, src }: Pick<ImageType, 'src'> & { overlay?: Boolean }) => {
+  const inlineStyles = {
+    backgroundImage: `url(${src})`,
+  };
 
-const BackgroundComponent = ({ children, overlay, src, ...rest }: BackgroundInterface) => (
-  <div role="img" className={styles.background} {...rest}>
-    {children}
-    {overlay && <div className={styles.overlay} />}
-  </div>
-);
+  return (
+    <div role="img" className={styles.background} style={inlineStyles}>
+      {overlay && <div className={styles.overlay} />}
+    </div>
+  );
+};
 
 export const Background: ElementType<BackgroundProps> = ({
   renderCustomBackground,
