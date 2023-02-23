@@ -20,7 +20,7 @@ class ThemeSingleton {
 
   public set options(themeOptions: GridOptions) {
     const filteredOptions = Object.fromEntries(
-      Object.entries(themeOptions).filter(([_, v]) => Boolean(v))
+      Object.entries(themeOptions).filter(([_, v]) => v === 0 || Boolean(v))
     );
 
     this._options = { ...this._options, ...filteredOptions };
