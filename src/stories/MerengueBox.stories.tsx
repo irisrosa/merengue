@@ -22,6 +22,20 @@ FromDataObject.args = {
   blocks: data.blocks,
 };
 
+export const CustomDOMElement: Story<MerengueData> = props => <MerengueBox {...props} />;
+
+CustomDOMElement.args = {
+  as: 'section',
+  blockAs: 'div',
+  blockPadding: '',
+  columns: 3,
+  extendBackground: true,
+  extendContent: false,
+  gap: 1,
+  maxWidth: '960px',
+  blocks: data.blocks,
+};
+
 export const Nested: Story<MerengueData> = props => {
   const ref = useRef(null);
   const ref2 = useRef(null);
