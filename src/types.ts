@@ -71,6 +71,7 @@ export type GridOptions = {
   gap?: 0 | 1 | 2 | 3 | 4;
   columns?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   maxWidth?: string;
+  blockAs?: keyof AllowedTags;
 };
 
 export type MerengueData = BackgroundProps &
