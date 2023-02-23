@@ -14,9 +14,8 @@
   img {
     max-width: 100%;
   }
-}
 
-.blockContent {
-  position: relative;
-  z-index: 1;
+  > * {
+    z-index: 1;
+  }
 }
