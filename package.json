@@ -1,6 +1,6 @@
 {
   "name": "merengue",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "module": "build/module.js",
   "types": "build/index.d.ts",
   "source": "src/index.ts",
